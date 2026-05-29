@@ -2,10 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroMenu AR Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AeroMenu AR Core Engine</title>
+    
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+        body { margin: 0; overflow: hidden; }
+        /* Prevent A-Frame from creating an annoying fullscreen overlay badge button */
+        .a-enter-vr { display: none !important; }
+    </style>
 </head>
 <body>
-    <h1>AeroMenu AR Engine Operational!</h1>
+
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: no; uiError: no;" 
+             embedded vr-mode-ui="enabled: false" 
+             device-orientation-permission-ui="enabled: false">
+        
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity id="pepperoni-target-entity" mindar-image-target="targetIndex: 0">
+            
+            <a-box id="placeholder-cube" 
+                   position="0 0 0" 
+                   scale="0.5 0.5 0.5" 
+                   material="color: #ff5e62; opacity: 0.85; roughness: 0.3; wireframe: false;">
+            </a-box>
+
+        </a-entity>
+
+    </a-scene>
+
 </body>
 </html>
