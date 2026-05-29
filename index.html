@@ -63,7 +63,21 @@
         </a-entity>
 
     </a-scene>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const targetEntity = document.querySelector('#pepperoni-target-entity');
 
+            // Console logger to fire when tracking engine binds successfully
+            targetEntity.addEventListener("targetFound", (event) => {
+                console.log("🎯 TARGET DETECTED SUCCESSFULLY!");
+                alert("Target Found! Look closely for the cube.");
+            });
+
+            targetEntity.addEventListener("targetLost", (event) => {
+                console.log("❌ Target tracking lost.");
+            });
+        });
+    </script>
 </body>
 
 </html>
