@@ -10,7 +10,7 @@
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -619,6 +619,7 @@
         </a-entity>
 
     </a-scene>
+
     <script>
         const menuDatabase = {
             "pizza_pepperoni": {
@@ -757,25 +758,8 @@
             const pepperoniTarget = document.querySelector('#target-pepperoni');
             pepperoniTarget.addEventListener("targetFound", () => {
                 window.triggerARItemScan("pizza_pepperoni");
+                alert("🎯 Target found! Code is perfectly communicating.");
             });
-        });
-    </script>
-    <script>
-        const sceneEl = document.querySelector('a-scene');
-
-        // Check if the AR System even boots up correctly
-        sceneEl.addEventListener("arReady", () => {
-            console.log("🚀 MindAR Engine has successfully loaded your targets.mind file!");
-        });
-
-        sceneEl.addEventListener("arError", () => {
-            alert("⚠️ AR Engine failed to load! Check your targets.mind file path.");
-        });
-
-        // Test tracking target triggers
-        const pepperoniTarget = document.querySelector('#target-pepperoni');
-        pepperoniTarget.addEventListener("targetFound", () => {
-            alert("🎯 Target found! Code is perfectly communicating.");
         });
     </script>
 </body>
