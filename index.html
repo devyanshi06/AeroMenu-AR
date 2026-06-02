@@ -10,7 +10,7 @@
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -53,27 +53,7 @@
             height: 100vh !important;
             object-fit: cover !important;
             z-index: 1 !important;
-            /* Keeps the camera stream as the absolute baseline background */
-        }
-
-        #aeromenu-ui-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 100 !important;
-            /* Keeps your glassmorphic buttons sitting safely on the very top layer */
-            pointer-events: none;
-        }
-
-        .a-enter-vr,
-        .a-enter-ar,
-        .a-loader-title {
-            display: none !important;
+            /* Keeps camera stream as background baseline */
         }
 
         /* --- Foreground UI Layout Layer --- */
@@ -86,9 +66,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            z-index: 100;
+            z-index: 100 !important;
+            /* Keeps UI sitting safely on the very top layer */
             pointer-events: none;
-            /* Allows scanning through empty space */
         }
 
         /* --- Top Header Bar --- */
@@ -477,7 +457,12 @@
             cursor: pointer;
         }
 
-        /* --- Responsiveness Architecture Queries --- */
+        .a-enter-vr,
+        .a-enter-ar,
+        .a-loader-title {
+            display: none !important;
+        }
+
         @media screen and (max-width: 375px) {
             .master-dock {
                 width: 95%;
@@ -629,7 +614,21 @@
         vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
         <a-assets>
-            <a-asset-item id="local-food-model" src="assets/food.glb"></a-asset-item>
+            <a-asset-item id="m-pizza-pep" src="assets/pizza_pep.glb"></a-asset-item>
+            <a-asset-item id="m-pizza-veg" src="assets/pizza_veg.glb"></a-asset-item>
+            <a-asset-item id="m-pizza-mar" src="assets/pizza_mar.glb"></a-asset-item>
+            <a-asset-item id="m-burger-cls" src="assets/burger_cls.glb"></a-asset-item>
+            <a-asset-item id="m-tacos-mex" src="assets/tacos_mex.glb"></a-asset-item>
+            <a-asset-item id="m-pasta-alf" src="assets/pasta_alf.glb"></a-asset-item>
+            <a-asset-item id="m-bowl-sld" src="assets/bowl_sld.glb"></a-asset-item>
+            <a-asset-item id="m-bowl-ram" src="assets/bowl_ram.glb"></a-asset-item>
+            <a-asset-item id="m-bowl-ssh" src="assets/bowl_ssh.glb"></a-asset-item>
+            <a-asset-item id="m-app-nch" src="assets/app_nch.glb"></a-asset-item>
+            <a-asset-item id="m-app-wng" src="assets/app_wng.glb"></a-asset-item>
+            <a-asset-item id="m-app-dmp" src="assets/app_dmp.glb"></a-asset-item>
+            <a-asset-item id="m-dsrt-wfl" src="assets/dsrt_wfl.glb"></a-asset-item>
+            <a-asset-item id="m-dsrt-chk" src="assets/dsrt_chk.glb"></a-asset-item>
+            <a-asset-item id="m-drnk-shk" src="assets/drnk_shk.glb"></a-asset-item>
         </a-assets>
 
         <a-entity light="type: ambient; color: #ffffff; intensity: 1.5;"></a-entity>
@@ -637,15 +636,64 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity id="target-pepperoni" mindar-image-target="targetIndex: 0">
+        <a-entity id="target-0" mindar-image-target="targetIndex: 0">
+            <a-gltf-model src="#m-pizza-pep" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
 
-            <a-ring color="#00e5ff" radius-inner="0.25" radius-outer="0.3" position="0 0 0.05" rotation="0 0 0"
-                material="wireframe: true; opacity: 0.85;">
-            </a-ring>
+        <a-entity id="target-1" mindar-image-target="targetIndex: 1">
+            <a-gltf-model src="#m-pizza-veg" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
 
-            <a-gltf-model src="#local-food-model" position="0 0 0.1" scale="1 1 1" rotation="90 0 0">
-            </a-gltf-model>
+        <a-entity id="target-2" mindar-image-target="targetIndex: 2">
+            <a-gltf-model src="#m-pizza-mar" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
 
+        <a-entity id="target-3" mindar-image-target="targetIndex: 3">
+            <a-gltf-model src="#m-burger-cls" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-4" mindar-image-target="targetIndex: 4">
+            <a-gltf-model src="#m-tacos-mex" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-5" mindar-image-target="targetIndex: 5">
+            <a-gltf-model src="#m-pasta-alf" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-6" mindar-image-target="targetIndex: 6">
+            <a-gltf-model src="#m-bowl-sld" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-7" mindar-image-target="targetIndex: 7">
+            <a-gltf-model src="#m-bowl-ram" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-8" mindar-image-target="targetIndex: 8">
+            <a-gltf-model src="#m-bowl-ssh" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-9" mindar-image-target="targetIndex: 9">
+            <a-gltf-model src="#m-app-nch" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-10" mindar-image-target="targetIndex: 10">
+            <a-gltf-model src="#m-app-wng" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-11" mindar-image-target="targetIndex: 11">
+            <a-gltf-model src="#m-app-dmp" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-12" mindar-image-target="targetIndex: 12">
+            <a-gltf-model src="#m-dsrt-wfl" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-13" mindar-image-target="targetIndex: 13">
+            <a-gltf-model src="#m-dsrt-chk" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="target-14" mindar-image-target="targetIndex: 14">
+            <a-gltf-model src="#m-drnk-shk" position="0 0 0.1" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
         </a-entity>
 
     </a-scene>
@@ -753,7 +801,6 @@
             updateUI();
         }
 
-        // Connects the Image Target Event Node to the UI Switch
         window.triggerARItemScan = function (itemKey) {
             if (menuDatabase[itemKey]) {
                 currentActiveItem = itemKey;
@@ -762,12 +809,11 @@
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Macro toggle drawer handling
+            // UI Button Handlers
             document.getElementById('macro-toggle-btn').addEventListener('click', () => {
                 document.getElementById('macro-analytics-card').classList.toggle('macro-card-visible');
             });
 
-            // Modal view handling
             document.getElementById('confirm-selection-btn').addEventListener('click', () => {
                 document.getElementById('modal-dish-name').innerText = document.getElementById('current-dish-title').innerText;
                 const currentIndicator = document.querySelector('.diet-indicator');
@@ -784,12 +830,22 @@
                 document.getElementById('waiter-modal').classList.add('modal-hidden');
             });
 
-            // --- LINK THE CAMERA SCANNER TO THE DATA EVENT LOOP ---
-            const pepperoniTarget = document.querySelector('#target-pepperoni');
-            pepperoniTarget.addEventListener("targetFound", () => {
-                window.triggerARItemScan("pizza_pepperoni");
-                alert("🎯 Target found! Code is perfectly communicating.");
-            });
+            // --- WIRED AR TRACKING CAPTURE SYSTEM FOR ALL 15 TARGET SLOTS ---
+            document.querySelector('#target-0').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_pepperoni"); });
+            document.querySelector('#target-1').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_veggie"); });
+            document.querySelector('#target-2').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_margherita"); });
+            document.querySelector('#target-3').addEventListener("targetFound", () => { window.triggerARItemScan("burger_classic"); });
+            document.querySelector('#target-4').addEventListener("targetFound", () => { window.triggerARItemScan("tacos_mexican"); });
+            document.querySelector('#target-5').addEventListener("targetFound", () => { window.triggerARItemScan("pasta_alfredo"); });
+            document.querySelector('#target-6').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_salad"); });
+            document.querySelector('#target-7').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_ramen"); });
+            document.querySelector('#target-8').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_sushi"); });
+            document.querySelector('#target-9').addEventListener("targetFound", () => { window.triggerARItemScan("app_nachos"); });
+            document.querySelector('#target-10').addEventListener("targetFound", () => { window.triggerARItemScan("app_wings"); });
+            document.querySelector('#target-11').addEventListener("targetFound", () => { window.triggerARItemScan("app_dumplings"); });
+            document.querySelector('#target-12').addEventListener("targetFound", () => { window.triggerARItemScan("dessert_waffle"); });
+            document.querySelector('#target-13').addEventListener("targetFound", () => { window.triggerARItemScan("dessert_cheesecake"); });
+            document.querySelector('#target-14').addEventListener("targetFound", () => { window.triggerARItemScan("drink_shake"); });
         });
     </script>
 </body>
