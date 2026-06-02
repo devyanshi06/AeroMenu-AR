@@ -7,17 +7,12 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>AeroMenu Official Integrated Engine</title>
 
-    <!-- AR FRAMEWORKS (Stable Production Versions) -->
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-    <!-- PREMIUM TYPOGRAPHY -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- ========================================================================== -->
-    <!-- MASTER STYLESHEET (For full-screen camera and responsive glassmorphism UI) -->
-    <!-- ========================================================================== -->
     <style>
         /* --- Base System Reset & Screen Fixes --- */
         * {
@@ -77,11 +72,11 @@
         .app-header {
             pointer-events: auto;
             width: 100%;
-            padding: 24px 20px 10px 20px;
+            padding: 24px 20px 40px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.9) 0%, rgba(10, 10, 12, 0.4) 100%);
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0) 100%);
         }
 
         .brand-group {
@@ -117,48 +112,24 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* --- COMPLETE HORIZONTAL MENU NAVIGATION DOCK --- */
-        .debug-override-dock {
-            pointer-events: auto;
-            width: 100%;
-            padding: 0 20px 15px 20px;
+        .info-circle-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
             display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            background: rgba(10, 10, 12, 0.4);
-            backdrop-filter: blur(5px);
-            scrollbar-width: none;
-        }
-
-        .debug-override-dock::-webkit-scrollbar {
-            display: none;
-        }
-
-        .debug-btn {
-            flex: 0 0 auto;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 30px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.75rem;
-            font-weight: 600;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .debug-btn-active {
-            background: #ff5e62 !important;
-            border-color: #ff5e62 !important;
-            color: white !important;
-            box-shadow: 0 0 10px rgba(255, 94, 98, 0.4);
         }
 
         /* --- Floating Macro Card --- */
         #macro-analytics-card {
             pointer-events: auto;
             position: absolute;
-            top: 125px;
+            top: 70px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
@@ -178,7 +149,7 @@
         .macro-card-visible {
             opacity: 1 !important;
             visibility: visible !important;
-            top: 135px !important;
+            top: 85px !important;
         }
 
         .card-header {
@@ -533,42 +504,22 @@
 
 <body>
 
-    <!-- ========================================================================== -->
-    <!-- INTERACTIVE FOREGROUND UI SKIN SECTION + 15 NAVIGATION BUTTONS              -->
-    <!-- ========================================================================== -->
     <div id="aeromenu-ui-wrapper">
 
-        <div style="width: 100%;">
-            <!-- Header -->
-            <header class="app-header">
-                <div class="brand-group">
-                    <div class="logo-orb"></div>
-                    <h1>AeroMenu <span class="badge-live">AR LIVE</span></h1>
-                </div>
-            </header>
-
-            <!-- 🛠️ COMPLETE 15-ITEM HORIZONTAL SCROLLABLE ENGINE NAV OVERRIDE DOCK -->
-            <div class="debug-override-dock">
-                <button class="debug-btn debug-btn-active" onclick="forceSelectARItem('m-pizza-pep')">1.
-                    Pepperoni</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-pizza-veg')">2. Veggie Pizza</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-pizza-mar')">3. Margherita</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-burger-cls')">4. Burger</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-tacos-mex')">5. Tacos</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-pasta-alf')">6. Alfredo</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-sld')">7. Salad</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-ram')">8. Ramen</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-ssh')">9. Sushi Roll</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-app-nch')">10. Nachos</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-app-wng')">11. Wings</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-app-dmp')">12. Dumplings</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-dsrt-wfl')">13. Waffle</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-dsrt-chk')">14. Cheesecake</button>
-                <button class="debug-btn" onclick="forceSelectARItem('m-drnk-shk')">15. Milkshake</button>
+        <header class="app-header">
+            <div class="brand-group">
+                <div class="logo-orb"></div>
+                <h1>AeroMenu <span class="badge-live">AR LIVE</span></h1>
             </div>
-        </div>
+            <button class="info-circle-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+            </button>
+        </header>
 
-        <!-- Floating Macro Analytics Card -->
         <div id="macro-analytics-card">
             <div class="card-header">
                 <h3>Nutritional Insights</h3>
@@ -596,7 +547,6 @@
             </div>
         </div>
 
-        <!-- Master Control Dock -->
         <section class="master-dock">
             <div class="dock-handle"></div>
 
@@ -611,7 +561,6 @@
                 </div>
             </div>
 
-            <!-- Diet Sliding Tabs Switch -->
             <div class="segmented-control-container">
                 <div class="sliding-glider"></div>
                 <button id="tab-standard" class="control-tab active-tab"
@@ -619,7 +568,6 @@
                 <button id="tab-vegan" class="control-tab" onclick="switchDietaryMode('vegan')">Plant-Based 🌿</button>
             </div>
 
-            <!-- Actions Footer -->
             <div class="action-footer-row">
                 <button class="secondary-action-btn" id="macro-toggle-btn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -642,7 +590,6 @@
 
     </div>
 
-    <!-- Full-Screen Flashcard Modal Confirmation Screen -->
     <div id="waiter-modal" class="modal-hidden">
         <div class="modal-card">
             <div class="success-ring">
@@ -660,13 +607,9 @@
         </div>
     </div>
 
-    <!-- ========================================================================== -->
-    <!-- BACKGROUND ENGINE SCENE CORE SECTION (MindAR + A-Frame)                   -->
-    <!-- ========================================================================== -->
     <a-scene mindar-image="imageTargetSrc: targets.mind; autoStart: true; uiLoading: no; uiError: no;" embedded
         vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
-        <!-- Local Asset Preloading Center -->
         <a-assets>
             <a-asset-item id="m-pizza-pep" src="assets/pizza_pep.glb"></a-asset-item>
             <a-asset-item id="m-pizza-veg" src="assets/pizza_veg.glb"></a-asset-item>
@@ -685,53 +628,76 @@
             <a-asset-item id="m-drnk-shk" src="assets/drnk_shk.glb"></a-asset-item>
         </a-assets>
 
-        <!-- HIGH-CONTRAST LIGHTING SYSTEM -->
-        <a-entity light="type: ambient; color: #ffffff; intensity: 1.5;"></a-entity>
-        <a-entity light="type: directional; color: #ffffff; intensity: 1.2;" position="1 4 2"></a-entity>
+        <a-entity light="type: ambient; color: #ffffff; intensity: 1.8;"></a-entity>
+        <a-entity light="type: directional; color: #ffffff; intensity: 1.4;" position="2 4 3"></a-entity>
+        <a-entity light="type: directional; color: #ffffff; intensity: 0.6;" position="-2 2 -1"></a-entity>
 
-        <!-- 
-            🎯 THE PRESENTATION VIEWPORT ENGINE LAYER 
-            Instead of hiding items inside targets, we attach a master model vector 
-            DIRECTLY into the camera's spatial viewpoint array field. This forces it
-            to display float-centered right on screen even if scanning is locked!
-        -->
-        <a-camera position="0 0 0" look-controls="enabled: false">
-            <a-gltf-model id="viewport-food-display" src="#m-pizza-pep" position="0 -0.2 -0.8" scale="1 1 1"
-                rotation="45 0 0">
-            </a-gltf-model>
-        </a-camera>
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- MindAR Image Scan Anchor Points (Kept fully intact for paper scanning verification) -->
-        <a-entity id="target-0" mindar-image-target="targetIndex: 0"></a-entity>
-        <a-entity id="target-1" mindar-image-target="targetIndex: 1"></a-entity>
-        <a-entity id="target-2" mindar-image-target="targetIndex: 2"></a-entity>
-        <a-entity id="target-3" mindar-image-target="targetIndex: 3"></a-entity>
-        <a-entity id="target-4" mindar-image-target="targetIndex: 4"></a-entity>
-        <a-entity id="target-5" mindar-image-target="targetIndex: 5"></a-entity>
-        <a-entity id="target-6" mindar-image-target="targetIndex: 6"></a-entity>
-        <a-entity id="target-7" mindar-image-target="targetIndex: 7"></a-entity>
-        <a-entity id="target-8" mindar-image-target="targetIndex: 8"></a-entity>
-        <a-entity id="target-9" mindar-image-target="targetIndex: 9"></a-entity>
-        <a-entity id="target-10" mindar-image-target="targetIndex: 10"></a-entity>
-        <a-entity id="target-11" mindar-image-target="targetIndex: 11"></a-entity>
-        <a-entity id="target-12" mindar-image-target="targetIndex: 12"></a-entity>
-        <a-entity id="target-13" mindar-image-target="targetIndex: 13"></a-entity>
-        <a-entity id="target-14" mindar-image-target="targetIndex: 14"></a-entity>
+        <a-entity class="ar-menu-target" data-itemkey="pizza_pepperoni" mindar-image-target="targetIndex: 0">
+            <a-gltf-model src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="pizza_veggie" mindar-image-target="targetIndex: 1">
+            <a-gltf-model src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="pizza_margherita" mindar-image-target="targetIndex: 2">
+            <a-gltf-model src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="burger_classic" mindar-image-target="targetIndex: 3">
+            <a-gltf-model src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="tacos_mexican" mindar-image-target="targetIndex: 4">
+            <a-gltf-model src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="pasta_alfredo" mindar-image-target="targetIndex: 5">
+            <a-gltf-model src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="bowl_salad" mindar-image-target="targetIndex: 6">
+            <a-gltf-model src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="bowl_ramen" mindar-image-target="targetIndex: 7">
+            <a-gltf-model src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="bowl_sushi" mindar-image-target="targetIndex: 8">
+            <a-gltf-model src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="app_nachos" mindar-image-target="targetIndex: 9">
+            <a-gltf-model src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="app_wings" mindar-image-target="targetIndex: 10">
+            <a-gltf-model src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="app_dumplings" mindar-image-target="targetIndex: 11">
+            <a-gltf-model src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="dessert_waffle" mindar-image-target="targetIndex: 12">
+            <a-gltf-model src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="dessert_cheesecake" mindar-image-target="targetIndex: 13">
+            <a-gltf-model src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
+
+        <a-entity class="ar-menu-target" data-itemkey="drink_shake" mindar-image-target="targetIndex: 14">
+            <a-gltf-model src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
+        </a-entity>
 
     </a-scene>
 
-    <!-- ========================================================================== -->
-    <!-- MASTER JAVASCRIPT ARCHITECTURE CONTROLLER                                  -->
-    <!-- ========================================================================== -->
     <script>
-        const assetMapToDbKey = {
-            'm-pizza-pep': 'pizza_pepperoni', 'm-pizza-veg': 'pizza_veggie', 'm-pizza-mar': 'pizza_margherita',
-            'm-burger-cls': 'burger_classic', 'm-tacos-mex': 'tacos_mexican', 'm-pasta-alf': 'pasta_alfredo',
-            'm-bowl-sld': 'bowl_salad', 'm-bowl-ram': 'bowl_ramen', 'm-bowl-ssh': 'bowl_sushi',
-            'm-app-nch': 'app_nachos', 'm-app-wng': 'app_wings', 'm-app-dmp': 'app_dumplings',
-            'm-dsrt-wfl': 'dessert_waffle', 'm-dsrt-chk': 'dessert_cheesecake', 'm-drnk-shk': 'drink_shake'
-        };
-
+        // Full database schema containing values for all 15 targeted menu components
         const menuDatabase = {
             "pizza_pepperoni": { standard: { title: "Classic Pepperoni Feast", price: "16.49", description: "Artisan sourdough crust, signature marinara, dynamic layers of smoked premium pepperoni.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "32g", pWidth: "75%", carbs: "68g", cWidth: "60%", fats: "22g", fWidth: "45%" }, vegan: { title: "Gourmet Plant-Vegan Pizza", price: "17.99", description: "Artisan sourdough crust, dairy-free mozzarella alternative, and jackfruit-based pepperoni.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "22g", pWidth: "55%", carbs: "74g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
             "pizza_veggie": { standard: { title: "Garden Fresh Supreme", price: "14.99", description: "Crisp bell peppers, red onions, mushrooms, juicy tomatoes, and fresh dairy mozzarella.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "62g", cWidth: "55%", fats: "16g", fWidth: "35%" }, vegan: { title: "Pure Plant Garden Delight", price: "15.99", description: "All organic garden veggies loaded over rich, melted plant-based cashew cheese.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "65g", cWidth: "58%", fats: "11g", fWidth: "22%" } },
@@ -790,43 +756,45 @@
         }
 
         // ==========================================================================
-        // 🚀 THE FINAL FORCE-RENDER VIEWPORT LINK HANDLER
+        // 🔮 SELF-CORRECTING DATA ROUTING RUNTIME NODE
         // ==========================================================================
-        function forceSelectARItem(assetIdString) {
-            const mappedDbKey = assetMapToDbKey[assetIdString];
-            currentActiveItem = mappedDbKey;
-            updateUI();
-
-            // Highlight button layout styling
-            document.querySelectorAll('.debug-btn').forEach(btn => btn.classList.remove('debug-btn-active'));
-            if (event && event.target) {
-                event.target.classList.add('debug-btn-active');
-            }
-
-            // Direct Viewport injection mapping override: Swaps file target instantly inside view bounds
-            const viewportDisplayModel = document.getElementById('viewport-food-display');
-            if (viewportDisplayModel) {
-                viewportDisplayModel.setAttribute('src', '#' + assetIdString);
-            }
-        }
-
         window.triggerARItemScan = function (itemKey) {
             if (menuDatabase[itemKey]) {
                 currentActiveItem = itemKey;
                 updateUI();
-
-                // Mirror camera scan detection back into the viewport display mesh asset channel
-                for (let key in assetMapToDbKey) {
-                    if (assetMapToDbKey[key] === itemKey) {
-                        document.getElementById('viewport-food-display').setAttribute('src', '#' + key);
-                        break;
-                    }
-                }
             }
         };
 
+        // Auto-bounding scale normalizer layer component register mapping logic
+        AFRAME.registerComponent('auto-scale-normalize', {
+            init: function () {
+                this.el.addEventListener('model-loaded', () => {
+                    const mesh = this.el.getObject3D('mesh');
+                    if (!mesh) return;
+
+                    // Calculate the real bounding dimensions of Person 2's asset
+                    const box = new THREE.Box3().setFromObject(mesh);
+                    const size = new THREE.Vector3();
+                    box.getSize(size);
+
+                    // Find the largest axis length to compute fractional scale offset adjustment
+                    const maxDim = Math.max(size.x, size.y, size.z);
+
+                    // If model is huge ( Blender scale exponent bug ) or microscopic, normalize it instantly to 0.4 units
+                    if (maxDim > 0) {
+                        const normalizationFactor = 0.4 / maxDim;
+                        this.el.setAttribute('scale', {
+                            x: normalizationFactor,
+                            y: normalizationFactor,
+                            z: normalizationFactor
+                        });
+                    }
+                });
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
-            // UI Layer elements click listeners
+            // Foreground Event Handlers
             document.getElementById('macro-toggle-btn').addEventListener('click', () => {
                 document.getElementById('macro-analytics-card').classList.toggle('macro-card-visible');
             });
@@ -847,22 +815,14 @@
                 document.getElementById('waiter-modal').classList.add('modal-hidden');
             });
 
-            // Tracking listeners assignments
-            document.querySelector('#target-0').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_pepperoni"); });
-            document.querySelector('#target-1').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_veggie"); });
-            document.querySelector('#target-2').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_margherita"); });
-            document.querySelector('#target-3').addEventListener("targetFound", () => { window.triggerARItemScan("burger_classic"); });
-            document.querySelector('#target-4').addEventListener("targetFound", () => { window.triggerARItemScan("tacos_mexican"); });
-            document.querySelector('#target-5').addEventListener("targetFound", () => { window.triggerARItemScan("pasta_alfredo"); });
-            document.querySelector('#target-6').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_salad"); });
-            document.querySelector('#target-7').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_ramen"); });
-            document.querySelector('#target-8').addEventListener("targetFound", () => { window.triggerARItemScan("bowl_sushi"); });
-            document.querySelector('#target-9').addEventListener("targetFound", () => { window.triggerARItemScan("app_nachos"); });
-            document.querySelector('#target-10').addEventListener("targetFound", () => { window.triggerARItemScan("app_wings"); });
-            document.querySelector('#target-11').addEventListener("targetFound", () => { window.triggerARItemScan("app_dumplings"); });
-            document.querySelector('#target-12').addEventListener("targetFound", () => { window.triggerARItemScan("dessert_waffle"); });
-            document.querySelector('#target-13').addEventListener("targetFound", () => { window.triggerARItemScan("dessert_cheesecake"); });
-            document.querySelector('#target-14').addEventListener("targetFound", () => { window.triggerARItemScan("drink_shake"); });
+            // Dynamic tracking target registration loops traversing DOM architecture attributes
+            document.querySelectorAll('.ar-menu-target').forEach(targetEntity => {
+                const itemKey = targetEntity.getAttribute('data-itemkey');
+
+                targetEntity.addEventListener("targetFound", () => {
+                    window.triggerARItemScan(itemKey);
+                });
+            });
         });
     </script>
 </body>
