@@ -756,6 +756,24 @@
             });
         });
     </script>
+    <script>
+        const sceneEl = document.querySelector('a-scene');
+
+        // Check if the AR System even boots up correctly
+        sceneEl.addEventListener("arReady", () => {
+            console.log("🚀 MindAR Engine has successfully loaded your targets.mind file!");
+        });
+
+        sceneEl.addEventListener("arError", () => {
+            alert("⚠️ AR Engine failed to load! Check your targets.mind file path.");
+        });
+
+        // Test tracking target triggers
+        const pepperoniTarget = document.querySelector('#target-pepperoni');
+        pepperoniTarget.addEventListener("targetFound", () => {
+            alert("🎯 Target found! Code is perfectly communicating.");
+        });
+    </script>
 </body>
 
 </html>
