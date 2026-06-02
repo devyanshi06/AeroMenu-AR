@@ -605,17 +605,21 @@
     <a-scene mindar-image="imageTargetSrc: targets.mind; autoStart: true; uiLoading: no; uiError: no;" embedded
         vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
+        <a-assets>
+            <a-asset-item id="pizza-model"
+                src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/band-example/bear/scene.gltf"></a-asset-item>
+        </a-assets>
+
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- TARGET ENTITY 0 (Maps to your first compiled item: Pepperoni Pizza) -->
         <a-entity id="target-pepperoni" mindar-image-target="targetIndex: 0">
-            <a-cylinder color="#ff5e62" radius="0.2" height="0.4" position="0 0 0.1" rotation="90 0 0"
-                material="roughness: 0.2; opacity: 0.95;">
-            </a-cylinder>
+
+            <a-gltf-model src="#pizza-model" position="0 0 0" scale="0.05 0.05 0.05" rotation="90 0 0">
+            </a-gltf-model>
+
         </a-entity>
 
     </a-scene>
-
     <script>
         const menuDatabase = {
             "pizza_pepperoni": {
