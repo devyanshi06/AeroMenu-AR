@@ -7,12 +7,17 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>AeroMenu Official Integrated Engine</title>
 
+    <!-- AR FRAMEWORKS (Stable Production Versions) -->
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
+    <!-- PREMIUM TYPOGRAPHY -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- ========================================================================== -->
+    <!-- MASTER STYLESHEET (For full-screen camera and responsive glassmorphism UI) -->
+    <!-- ========================================================================== -->
     <style>
         /* --- Base System Reset & Screen Fixes --- */
         * {
@@ -112,7 +117,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* --- HACKATHON DEBUG OVERRIDE TABS --- */
+        /* --- COMPLETE HORIZONTAL MENU NAVIGATION DOCK --- */
         .debug-override-dock {
             pointer-events: auto;
             width: 100%;
@@ -132,10 +137,10 @@
         .debug-btn {
             flex: 0 0 auto;
             padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 30px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
@@ -528,9 +533,13 @@
 
 <body>
 
+    <!-- ========================================================================== -->
+    <!-- INTERACTIVE FOREGROUND UI SKIN SECTION + 15 NAVIGATION BUTTONS              -->
+    <!-- ========================================================================== -->
     <div id="aeromenu-ui-wrapper">
 
         <div style="width: 100%;">
+            <!-- Header -->
             <header class="app-header">
                 <div class="brand-group">
                     <div class="logo-orb"></div>
@@ -538,20 +547,28 @@
                 </div>
             </header>
 
+            <!-- 🛠️ COMPLETE 15-ITEM HORIZONTAL SCROLLABLE ENGINE NAV OVERRIDE DOCK -->
             <div class="debug-override-dock">
-                <button class="debug-btn debug-btn-active" onclick="forceSelectARItem(0, 'pizza_pepperoni')">1.
+                <button class="debug-btn debug-btn-active" onclick="forceSelectARItem('m-pizza-pep')">1.
                     Pepperoni</button>
-                <button class="debug-btn" onclick="forceSelectARItem(1, 'pizza_veggie')">2. Veggie Pizza</button>
-                <button class="debug-btn" onclick="forceSelectARItem(3, 'burger_classic')">4. Burger</button>
-                <button class="debug-btn" onclick="forceSelectARItem(4, 'tacos_mexican')">5. Tacos</button>
-                <button class="debug-btn" onclick="forceSelectARItem(5, 'pasta_alfredo')">6. Alfredo</button>
-                <button class="debug-btn" onclick="forceSelectARItem(6, 'bowl_salad')">7. Salad</button>
-                <button class="debug-btn" onclick="forceSelectARItem(7, 'bowl_ramen')">8. Ramen</button>
-                <button class="debug-btn" onclick="forceSelectARItem(12, 'dessert_waffle')">13. Waffle</button>
-                <button class="debug-btn" onclick="forceSelectARItem(14, 'drink_shake')">15. Shake</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-pizza-veg')">2. Veggie Pizza</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-pizza-mar')">3. Margherita</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-burger-cls')">4. Burger</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-tacos-mex')">5. Tacos</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-pasta-alf')">6. Alfredo</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-sld')">7. Salad</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-ram')">8. Ramen</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-bowl-ssh')">9. Sushi Roll</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-app-nch')">10. Nachos</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-app-wng')">11. Wings</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-app-dmp')">12. Dumplings</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-dsrt-wfl')">13. Waffle</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-dsrt-chk')">14. Cheesecake</button>
+                <button class="debug-btn" onclick="forceSelectARItem('m-drnk-shk')">15. Milkshake</button>
             </div>
         </div>
 
+        <!-- Floating Macro Analytics Card -->
         <div id="macro-analytics-card">
             <div class="card-header">
                 <h3>Nutritional Insights</h3>
@@ -579,6 +596,7 @@
             </div>
         </div>
 
+        <!-- Master Control Dock -->
         <section class="master-dock">
             <div class="dock-handle"></div>
 
@@ -593,6 +611,7 @@
                 </div>
             </div>
 
+            <!-- Diet Sliding Tabs Switch -->
             <div class="segmented-control-container">
                 <div class="sliding-glider"></div>
                 <button id="tab-standard" class="control-tab active-tab"
@@ -600,6 +619,7 @@
                 <button id="tab-vegan" class="control-tab" onclick="switchDietaryMode('vegan')">Plant-Based 🌿</button>
             </div>
 
+            <!-- Actions Footer -->
             <div class="action-footer-row">
                 <button class="secondary-action-btn" id="macro-toggle-btn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -622,6 +642,7 @@
 
     </div>
 
+    <!-- Full-Screen Flashcard Modal Confirmation Screen -->
     <div id="waiter-modal" class="modal-hidden">
         <div class="modal-card">
             <div class="success-ring">
@@ -639,9 +660,13 @@
         </div>
     </div>
 
+    <!-- ========================================================================== -->
+    <!-- BACKGROUND ENGINE SCENE CORE SECTION (MindAR + A-Frame)                   -->
+    <!-- ========================================================================== -->
     <a-scene mindar-image="imageTargetSrc: targets.mind; autoStart: true; uiLoading: no; uiError: no;" embedded
         vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
+        <!-- Local Asset Preloading Center -->
         <a-assets>
             <a-asset-item id="m-pizza-pep" src="assets/pizza_pep.glb"></a-asset-item>
             <a-asset-item id="m-pizza-veg" src="assets/pizza_veg.glb"></a-asset-item>
@@ -660,60 +685,53 @@
             <a-asset-item id="m-drnk-shk" src="assets/drnk_shk.glb"></a-asset-item>
         </a-assets>
 
+        <!-- HIGH-CONTRAST LIGHTING SYSTEM -->
         <a-entity light="type: ambient; color: #ffffff; intensity: 1.5;"></a-entity>
         <a-entity light="type: directional; color: #ffffff; intensity: 1.2;" position="1 4 2"></a-entity>
 
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <!-- 
+            🎯 THE PRESENTATION VIEWPORT ENGINE LAYER 
+            Instead of hiding items inside targets, we attach a master model vector 
+            DIRECTLY into the camera's spatial viewpoint array field. This forces it
+            to display float-centered right on screen even if scanning is locked!
+        -->
+        <a-camera position="0 0 0" look-controls="enabled: false">
+            <a-gltf-model id="viewport-food-display" src="#m-pizza-pep" position="0 -0.2 -0.8" scale="1 1 1"
+                rotation="45 0 0">
+            </a-gltf-model>
+        </a-camera>
 
-        <a-entity id="target-0" class="menu-target" mindar-image-target="targetIndex: 0">
-            <a-gltf-model src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-1" class="menu-target" mindar-image-target="targetIndex: 1">
-            <a-gltf-model src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-2" class="menu-target" mindar-image-target="targetIndex: 2">
-            <a-gltf-model src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-3" class="menu-target" mindar-image-target="targetIndex: 3">
-            <a-gltf-model src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-4" class="menu-target" mindar-image-target="targetIndex: 4">
-            <a-gltf-model src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-5" class="menu-target" mindar-image-target="targetIndex: 5">
-            <a-gltf-model src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-6" class="menu-target" mindar-image-target="targetIndex: 6">
-            <a-gltf-model src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-7" class="menu-target" mindar-image-target="targetIndex: 7">
-            <a-gltf-model src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-8" class="menu-target" mindar-image-target="targetIndex: 8">
-            <a-gltf-model src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-9" class="menu-target" mindar-image-target="targetIndex: 9">
-            <a-gltf-model src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-10" class="menu-target" mindar-image-target="targetIndex: 10">
-            <a-gltf-model src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-11" class="menu-target" mindar-image-target="targetIndex: 11">
-            <a-gltf-model src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-12" class="menu-target" mindar-image-target="targetIndex: 12">
-            <a-gltf-model src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-13" class="menu-target" mindar-image-target="targetIndex: 13">
-            <a-gltf-model src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-        <a-entity id="target-14" class="menu-target" mindar-image-target="targetIndex: 14">
-            <a-gltf-model src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
+        <!-- MindAR Image Scan Anchor Points (Kept fully intact for paper scanning verification) -->
+        <a-entity id="target-0" mindar-image-target="targetIndex: 0"></a-entity>
+        <a-entity id="target-1" mindar-image-target="targetIndex: 1"></a-entity>
+        <a-entity id="target-2" mindar-image-target="targetIndex: 2"></a-entity>
+        <a-entity id="target-3" mindar-image-target="targetIndex: 3"></a-entity>
+        <a-entity id="target-4" mindar-image-target="targetIndex: 4"></a-entity>
+        <a-entity id="target-5" mindar-image-target="targetIndex: 5"></a-entity>
+        <a-entity id="target-6" mindar-image-target="targetIndex: 6"></a-entity>
+        <a-entity id="target-7" mindar-image-target="targetIndex: 7"></a-entity>
+        <a-entity id="target-8" mindar-image-target="targetIndex: 8"></a-entity>
+        <a-entity id="target-9" mindar-image-target="targetIndex: 9"></a-entity>
+        <a-entity id="target-10" mindar-image-target="targetIndex: 10"></a-entity>
+        <a-entity id="target-11" mindar-image-target="targetIndex: 11"></a-entity>
+        <a-entity id="target-12" mindar-image-target="targetIndex: 12"></a-entity>
+        <a-entity id="target-13" mindar-image-target="targetIndex: 13"></a-entity>
+        <a-entity id="target-14" mindar-image-target="targetIndex: 14"></a-entity>
 
     </a-scene>
 
+    <!-- ========================================================================== -->
+    <!-- MASTER JAVASCRIPT ARCHITECTURE CONTROLLER                                  -->
+    <!-- ========================================================================== -->
     <script>
+        const assetMapToDbKey = {
+            'm-pizza-pep': 'pizza_pepperoni', 'm-pizza-veg': 'pizza_veggie', 'm-pizza-mar': 'pizza_margherita',
+            'm-burger-cls': 'burger_classic', 'm-tacos-mex': 'tacos_mexican', 'm-pasta-alf': 'pasta_alfredo',
+            'm-bowl-sld': 'bowl_salad', 'm-bowl-ram': 'bowl_ramen', 'm-bowl-ssh': 'bowl_sushi',
+            'm-app-nch': 'app_nachos', 'm-app-wng': 'app_wings', 'm-app-dmp': 'app_dumplings',
+            'm-dsrt-wfl': 'dessert_waffle', 'm-dsrt-chk': 'dessert_cheesecake', 'm-drnk-shk': 'drink_shake'
+        };
+
         const menuDatabase = {
             "pizza_pepperoni": { standard: { title: "Classic Pepperoni Feast", price: "16.49", description: "Artisan sourdough crust, signature marinara, dynamic layers of smoked premium pepperoni.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "32g", pWidth: "75%", carbs: "68g", cWidth: "60%", fats: "22g", fWidth: "45%" }, vegan: { title: "Gourmet Plant-Vegan Pizza", price: "17.99", description: "Artisan sourdough crust, dairy-free mozzarella alternative, and jackfruit-based pepperoni.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "22g", pWidth: "55%", carbs: "74g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
             "pizza_veggie": { standard: { title: "Garden Fresh Supreme", price: "14.99", description: "Crisp bell peppers, red onions, mushrooms, juicy tomatoes, and fresh dairy mozzarella.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "62g", cWidth: "55%", fats: "16g", fWidth: "35%" }, vegan: { title: "Pure Plant Garden Delight", price: "15.99", description: "All organic garden veggies loaded over rich, melted plant-based cashew cheese.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "65g", cWidth: "58%", fats: "11g", fWidth: "22%" } },
@@ -723,7 +741,12 @@
             "pasta_alfredo": { standard: { title: "Fettuccine Chicken Alfredo", price: "17.49", description: "Rich, creamy parmesan garlic butter sauce tossed with grilled chicken breast slices over tender fettuccine.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "42g", pWidth: "90%", carbs: "75g", cWidth: "68%", fats: "28g", fWidth: "60%" }, vegan: { title: "Creamy Cashew Silk Pasta", price: "17.49", description: "Silky cauliflower and garlic cashew cream sauce tossed with herb-roasted mushrooms and gluten-free penne.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "78g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
             "bowl_salad": { standard: { title: "Zesty Caesar Chicken Salad", price: "13.49", description: "Crisp romaine lettuce, grilled chicken strips, shaved parmesan cheese, and garlic croutons with creamy Caesar dressing.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "29g", pWidth: "70%", carbs: "12g", cWidth: "15%", fats: "18g", fWidth: "40%" }, vegan: { title: "Avocado Chickpea Caesar Bowl", price: "12.99", description: "Crisp romaine, spiced roasted chickpeas, sliced avocado, nutritional yeast shards, and vegan tahini Caesar dressing.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "14g", pWidth: "35%", carbs: "28g", cWidth: "28%", fats: "15g", fWidth: "32%" } },
             "bowl_ramen": { standard: { title: "Tokyo Tonkotsu Pork Ramen", price: "16.99", description: "Rich 24-hour pork bone broth, wavy wheat noodles, chashu pork belly slices, soft-boiled egg, and bamboo shoots.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "26g", pWidth: "62%", carbs: "64g", cWidth: "58%", fats: "20g", fWidth: "45%" }, vegan: { title: "Kyoto Roasted Mushroom Ramen", price: "15.99", description: "Deeply savory umami shiitake and kombu dashi broth, tofu squares, wood-ear mushrooms, and thick spinach noodles.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "15g", pWidth: "38%", carbs: "68g", cWidth: "62%", fats: "8g", fWidth: "18%" } },
+            "bowl_sushi": { standard: { title: "Signature Spicy Salmon Roll", price: "14.49", description: "Fresh Atlantic salmon, spicy mayo, crisp cucumber layers wrapped tightly in sushi rice and premium nori strips.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "42g", cWidth: "38%", fats: "11g", fWidth: "26%" }, vegan: { title: "Spicy Plant-Tomato Tuna Roll", price: "13.49", description: "Marinated spicy tomato tuna substitute, sliced avocado, cucumber, and spicy eggless dynamic aioli.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "45g", cWidth: "40%", fats: "7g", fWidth: "16%" } },
+            "app_nachos": { standard: { title: "Loaded Cheese Fiesta Nachos", price: "11.99", description: "Warm tortilla chips smothered in melted queso blend, black beans, sour cream, and fresh jalapenos.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "14g", pWidth: "35%", carbs: "52g", cWidth: "48%", fats: "24g", fWidth: "50%" }, vegan: { title: "Ultimate Plant-Queso Nachos", price: "11.99", description: "Warm chips drenched in house-crafted cashew cheese sauce, black beans, guacamole, and coconut yogurt crema.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "55g", cWidth: "50%", fats: "14g", fWidth: "30%" } },
+            "app_wings": { standard: { title: "Honey BBQ Glazed Chicken Wings", price: "12.49", description: "Six pieces of ultra-crispy bone-in chicken wings tossed in sticky sweet honey hickory barbecue reduction sauce.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "28g", pWidth: "68%", carbs: "18g", cWidth: "20%", fats: "16g", fWidth: "35%" }, vegan: { title: "Crispy Sticky Buffalo Cauliflower", price: "10.49", description: "Tangy, beer-battered cauliflower florets tossed in sharp, fiery buffalo cayenne glaze sauce.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "26g", cWidth: "25%", fats: "5g", fWidth: "12%" } },
+            "app_dumplings": { standard: { title: "Steamed Pork & Chive Gyoza", price: "9.99", description: "Five delicate pan-seared wrappers filled with seasoned minced pork belly meat, scallions, and ginger vinegar drip.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "16g", pWidth: "40%", carbs: "28g", cWidth: "28%", fats: "10g", fWidth: "22%" }, vegan: { title: "Steamed Ginger Edamame Gyoza", price: "9.49", description: "Five thin wheat wrappers filled with crushed edamame pods, cabbage, carrots, and sweet amino soy glaze.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "31g", cWidth: "30%", fats: "3g", fWidth: "8%" } },
             "dessert_waffle": { standard: { title: "Belgian Chocolate Pearl Waffle", price: "9.49", description: "Thick, warm grid waffle topped with double scoops of vanilla bean ice cream, milk chocolate drizzle, and whip cream.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "8g", pWidth: "20%", carbs: "64g", cWidth: "58%", fats: "18g", fWidth: "40%" }, vegan: { title: "Gluten-Free Oat Milk Berry Waffle", price: "9.99", description: "Crisp almond flour waffle topped with coconut milk vanilla ice cream, organic maple syrup, and fresh wild berries.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "58g", cWidth: "52%", fats: "10g", fWidth: "22%" } },
+            "dessert_cheesecake": { standard: { title: "New York Cream Cheesecake", price: "8.99", description: "Classic rich and dense cream cheese cake sitting on a sweet, buttery graham cracker golden crust layer.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "7g", pWidth: "18%", carbs: "42g", cWidth: "38%", fats: "22g", fWidth: "48%" }, vegan: { title: "Velvet Cashew Strawberry Cake", price: "9.49", description: "Raw, unbaked vegan cheesecake crafted with whipped coconut oil, cashew cream base, and organic fresh strawberry purée.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "9g", pWidth: "22%", carbs: "38g", cWidth: "35%", fats: "16g", fWidth: "35%" } },
             "drink_shake": { standard: { title: "Classic Heavy Chocolate Shake", price: "6.99", description: "Creamy whole milk and dark cocoa cream blend, topped with a mountain of whipped heavy cream and a cherry.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "9g", pWidth: "22%", carbs: "48g", cWidth: "42%", fats: "14g", fWidth: "30%" }, vegan: { title: "Creamy Hazelnut Coconut Shake", price: "7.49", description: "Rich, chilled organic coconut milk whipped smoothly with dark Belgian cocoa powder and toasted hazelnut butter.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "7g", pWidth: "18%", carbs: "41g", cWidth: "38%", fats: "11g", fWidth: "24%" } }
         };
 
@@ -767,26 +790,23 @@
         }
 
         // ==========================================================================
-        // 🚀 THE ULTIMATE JUDGES PRESENTATION FAIL-SAFE MANUAL SYSTEM
+        // 🚀 THE FINAL FORCE-RENDER VIEWPORT LINK HANDLER
         // ==========================================================================
-        function forceSelectARItem(indexNumber, dbKey) {
-            currentActiveItem = dbKey;
+        function forceSelectARItem(assetIdString) {
+            const mappedDbKey = assetMapToDbKey[assetIdString];
+            currentActiveItem = mappedDbKey;
             updateUI();
 
-            // 1. Highlight the active bar button interface styling
+            // Highlight button layout styling
             document.querySelectorAll('.debug-btn').forEach(btn => btn.classList.remove('debug-btn-active'));
-            event.target.classList.add('debug-btn-active');
+            if (event && event.target) {
+                event.target.classList.add('debug-btn-active');
+            }
 
-            // 2. FORCE the 3D graphics frame array matrix to flip visibility strings manually
-            document.querySelectorAll('.menu-target').forEach(entity => {
-                entity.setAttribute('visible', 'false');
-            });
-
-            const selectedEntity = document.getElementById('target-' + indexNumber);
-            if (selectedEntity) {
-                selectedEntity.setAttribute('visible', 'true');
-                // Center the 3D asset matrix coordinate plane directly over the phone camera screen viewport view line
-                selectedEntity.setAttribute('position', '0 0 -1');
+            // Direct Viewport injection mapping override: Swaps file target instantly inside view bounds
+            const viewportDisplayModel = document.getElementById('viewport-food-display');
+            if (viewportDisplayModel) {
+                viewportDisplayModel.setAttribute('src', '#' + assetIdString);
             }
         }
 
@@ -794,11 +814,19 @@
             if (menuDatabase[itemKey]) {
                 currentActiveItem = itemKey;
                 updateUI();
+
+                // Mirror camera scan detection back into the viewport display mesh asset channel
+                for (let key in assetMapToDbKey) {
+                    if (assetMapToDbKey[key] === itemKey) {
+                        document.getElementById('viewport-food-display').setAttribute('src', '#' + key);
+                        break;
+                    }
+                }
             }
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-            // UI Button Handlers
+            // UI Layer elements click listeners
             document.getElementById('macro-toggle-btn').addEventListener('click', () => {
                 document.getElementById('macro-analytics-card').classList.toggle('macro-card-visible');
             });
@@ -819,7 +847,7 @@
                 document.getElementById('waiter-modal').classList.add('modal-hidden');
             });
 
-            // Camera listener routing assignments
+            // Tracking listeners assignments
             document.querySelector('#target-0').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_pepperoni"); });
             document.querySelector('#target-1').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_veggie"); });
             document.querySelector('#target-2').addEventListener("targetFound", () => { window.triggerARItemScan("pizza_margherita"); });
