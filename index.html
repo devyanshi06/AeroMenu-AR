@@ -32,12 +32,20 @@
             position: fixed;
         }
 
-        /* --- Force Camera Canvas to Be Full-Screen Background --- */
+        /* --- Force Camera Canvas and Graphics to Layer Correctly --- */
         a-scene,
         .a-canvas,
-        .a-video-container,
-        video,
-        canvas {
+        .a-video-container {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 2 !important;
+            /* Pulls the 3D rendering canvas forward */
+        }
+
+        video {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
@@ -45,6 +53,21 @@
             height: 100vh !important;
             object-fit: cover !important;
             z-index: 1 !important;
+            /* Keeps the camera stream as the absolute baseline background */
+        }
+
+        #aeromenu-ui-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100 !important;
+            /* Keeps your glassmorphic buttons sitting safely on the very top layer */
+            pointer-events: none;
         }
 
         .a-enter-vr,
