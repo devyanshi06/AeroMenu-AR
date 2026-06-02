@@ -1,158 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>AeroMenu Official Integrated Engine</title>
-    
+
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         /* --- Base System Reset & Screen Fixes --- */
         * {
-            margin: 0; padding: 0; box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-        html, body {
-            width: 100vw; height: 100vh; overflow: hidden !important;
-            background-color: #000000 !important; position: fixed;
+
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden !important;
+            background-color: #000000 !important;
+            position: fixed;
         }
 
         /* --- Force Camera Canvas to Be Full-Screen Background --- */
-        a-scene, .a-canvas, .a-video-container, video, canvas {
-            position: fixed !important; top: 0 !important; left: 0 !important;
-            width: 100vw !important; height: 100vh !important;
-            object-fit: cover !important; z-index: 1 !important;
+        a-scene,
+        .a-canvas,
+        .a-video-container,
+        video,
+        canvas {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
         }
-        .a-enter-vr, .a-enter-ar, .a-loader-title { display: none !important; }
+
+        .a-enter-vr,
+        .a-enter-ar,
+        .a-loader-title {
+            display: none !important;
+        }
 
         /* --- Foreground UI Layout Layer --- */
         #aeromenu-ui-wrapper {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            display: flex; flex-direction: column; justify-content: space-between;
-            z-index: 100; pointer-events: none; /* Allows scanning through empty space */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+            pointer-events: none;
+            /* Allows scanning through empty space */
         }
 
         /* --- Top Header Bar --- */
         .app-header {
-            pointer-events: auto; width: 100%; padding: 24px 20px 40px 20px;
-            display: flex; justify-content: space-between; align-items: center;
+            pointer-events: auto;
+            width: 100%;
+            padding: 24px 20px 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0) 100%);
         }
-        .brand-group { display: flex; align-items: center; gap: 10px; }
-        .logo-orb {
-            width: 12px; height: 12px; background: #ff5e62; border-radius: 50%;
-            box-shadow: 0 0 12px #ff5e62; animation: pulsingPulse 2s infinite ease-in-out;
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .app-header h1 { font-size: 1.3rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 8px; }
-        .badge-live { font-size: 0.65rem; font-weight: 700; background: rgba(255, 255, 255, 0.12); padding: 3px 8px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .info-circle-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); color: white; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+        .logo-orb {
+            width: 12px;
+            height: 12px;
+            background: #ff5e62;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #ff5e62;
+            animation: pulsingPulse 2s infinite ease-in-out;
+        }
+
+        .app-header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-live {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 3px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-circle-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
 
         /* --- Floating Macro Card --- */
         #macro-analytics-card {
-            pointer-events: auto; position: absolute; top: 70px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 400px; background: rgba(18, 18, 24, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; padding: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); opacity: 0; visibility: hidden;
+            pointer-events: auto;
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(18, 18, 24, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            opacity: 0;
+            visibility: hidden;
         }
-        .macro-card-visible { opacity: 1 !important; visibility: visible !important; top: 85px !important; }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; color: white; }
-        .card-header h3 { font-size: 0.9rem; font-weight: 700; }
-        .diet-indicator { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 8px; }
-        .standard-tag { background: rgba(255, 167, 38, 0.15); color: #ffa726; }
-        .vegan-tag { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
-        .macro-bar-group { margin-bottom: 8px; }
-        .macro-stat { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 3px; color: rgba(255,255,255,0.6); }
-        .macro-stat strong { color: white; }
-        .macro-progress-track { width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
-        .macro-progress-fill { height: 100%; background: #ff5e62; border-radius: 4px; transition: width 0.5s ease; }
-        #bar-protein { background: #4ade80; }
+
+        .macro-card-visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            top: 85px !important;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .diet-indicator {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        .standard-tag {
+            background: rgba(255, 167, 38, 0.15);
+            color: #ffa726;
+        }
+
+        .vegan-tag {
+            background: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
+        }
+
+        .macro-bar-group {
+            margin-bottom: 8px;
+        }
+
+        .macro-stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            margin-bottom: 3px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .macro-stat strong {
+            color: white;
+        }
+
+        .macro-progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .macro-progress-fill {
+            height: 100%;
+            background: #ff5e62;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        #bar-protein {
+            background: #4ade80;
+        }
 
         /* --- Bottom Interactive Menu Dock --- */
         .master-dock {
-            pointer-events: auto; width: 92%; max-width: 450px; margin: 0 auto 24px auto;
-            background: rgba(15, 15, 22, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 28px; padding: 24px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+            pointer-events: auto;
+            width: 92%;
+            max-width: 450px;
+            margin: 0 auto 24px auto;
+            background: rgba(15, 15, 22, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
         }
-        .dock-handle { width: 36px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; margin: -12px auto 16px auto; }
-        .dish-meta-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-        .title-block h2 { font-size: 1.35rem; font-weight: 700; color: white; letter-spacing: -0.3px; line-height: 1.2; }
-        .dish-description { font-size: 0.8rem; color: rgba(255, 255, 255, 0.55); margin-top: 5px; line-height: 1.4; }
-        .price-block { font-size: 1.4rem; font-weight: 800; color: #4ade80; display: flex; }
-        .price-currency { font-size: 0.9rem; font-weight: 600; margin-top: 2px; margin-right: 1px; }
+
+        .dock-handle {
+            width: 36px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: -12px auto 16px auto;
+        }
+
+        .dish-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .title-block h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+
+        .dish-description {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .price-block {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #4ade80;
+            display: flex;
+        }
+
+        .price-currency {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 2px;
+            margin-right: 1px;
+        }
 
         /* --- Sliding Sliding Tab Control --- */
         .segmented-control-container {
-            position: relative; width: 100%; height: 48px; background: rgba(0, 0, 0, 0.25);
-            border-radius: 14px; padding: 4px; display: flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 16px;
+            position: relative;
+            width: 100%;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 14px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 16px;
         }
+
         .sliding-glider {
-            position: absolute; top: 4px; left: 4px; height: 38px; width: calc(50% - 4px);
-            background: #ffffff; border-radius: 11px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: 38px;
+            width: calc(50% - 4px);
+            background: #ffffff;
+            border-radius: 11px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 1;
         }
+
         .control-tab {
-            position: relative; flex: 1; height: 100%; background: none; border: none;
-            color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; font-weight: 600; cursor: pointer; z-index: 2; display: flex; align-items: center; justify-content: center;
+            position: relative;
+            flex: 1;
+            height: 100%;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .active-tab { color: #0b0b10 !important; }
+
+        .active-tab {
+            color: #0b0b10 !important;
+        }
 
         /* --- Buttons --- */
-        .action-footer-row { display: flex; gap: 12px; width: 100%; }
-        .secondary-action-btn {
-            flex: 0.45; height: 48px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px; color: white; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+        .action-footer-row {
+            display: flex;
+            gap: 12px;
+            width: 100%;
         }
+
+        .secondary-action-btn {
+            flex: 0.45;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
         .primary-order-btn {
-            flex: 0.55; height: 48px; background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%); border: none;
-            border-radius: 14px; color: white; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; box-shadow: 0 4px 16px rgba(255, 94, 98, 0.3);
+            flex: 0.55;
+            height: 48px;
+            background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255, 94, 98, 0.3);
         }
 
         /* --- Waiter Modal Pop-up --- */
         #waiter-modal {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 10, 12, 0.6);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: all 0.35s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s ease;
         }
-        .modal-hidden { opacity: 0; pointer-events: none; transform: scale(1.05); }
-        .modal-visible { opacity: 1; pointer-events: auto; transform: scale(1); }
-        .modal-card { width: 88%; max-width: 380px; background: #16161e; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 28px; text-align: center; color: white;}
-        .success-ring { width: 64px; height: 64px; background: rgba(74, 222, 128, 0.1); border: 2px dashed #4ade80; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; }
-        .summary-box { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 16px; margin: 20px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .summary-title { font-size: 1.1rem; font-weight: 700; }
-        .table-notice { font-size: 0.9rem; margin-bottom: 24px; color: rgba(255,255,255,0.6); }
-        .table-notice strong { color: #ff5e62; }
-        .close-modal-btn { width: 100%; height: 46px; background: rgba(255, 255, 255, 0.1); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; }
+
+        .modal-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+        }
+
+        .modal-visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .modal-card {
+            width: 88%;
+            max-width: 380px;
+            background: #16161e;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            text-align: center;
+            color: white;
+        }
+
+        .success-ring {
+            width: 64px;
+            height: 64px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 2px dashed #4ade80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .table-notice {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .table-notice strong {
+            color: #ff5e62;
+        }
+
+        .close-modal-btn {
+            width: 100%;
+            height: 46px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
         /* --- Responsiveness Architecture Queries --- */
         @media screen and (max-width: 375px) {
-            .master-dock { width: 95%; padding: 16px; }
-            .dish-description { display: none; }
+            .master-dock {
+                width: 95%;
+                padding: 16px;
+            }
+
+            .dish-description {
+                display: none;
+            }
         }
+
         @media screen and (min-width: 480px) {
-            .master-dock, #macro-analytics-card { width: 420px; left: 50%; position: absolute; transform: translateX(-50%); }
-            .master-dock { bottom: 0; }
+
+            .master-dock,
+            #macro-analytics-card {
+                width: 420px;
+                left: 50%;
+                position: absolute;
+                transform: translateX(-50%);
+            }
+
+            .master-dock {
+                bottom: 0;
+            }
         }
+
         @keyframes pulsingPulse {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.2); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div id="aeromenu-ui-wrapper">
-        
+
         <header class="app-header">
             <div class="brand-group">
                 <div class="logo-orb"></div>
                 <h1>AeroMenu <span class="badge-live">AR LIVE</span></h1>
             </div>
             <button class="info-circle-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
             </button>
         </header>
 
@@ -164,26 +523,33 @@
             <div class="macro-graphic-container">
                 <div class="macro-bar-group">
                     <div class="macro-stat"><span>Protein</span><strong id="macro-protein">32g</strong></div>
-                    <div class="macro-progress-track"><div id="bar-protein" class="macro-progress-fill" style="width: 75%;"></div></div>
+                    <div class="macro-progress-track">
+                        <div id="bar-protein" class="macro-progress-fill" style="width: 75%;"></div>
+                    </div>
                 </div>
                 <div class="macro-bar-group">
                     <div class="macro-stat"><span>Carbs</span><strong id="macro-carbs">68g</strong></div>
-                    <div class="macro-progress-track"><div id="bar-carbs" class="macro-progress-fill" style="width: 60%;"></div></div>
+                    <div class="macro-progress-track">
+                        <div id="bar-carbs" class="macro-progress-fill" style="width: 60%;"></div>
+                    </div>
                 </div>
                 <div class="macro-bar-group">
                     <div class="macro-stat"><span>Fats</span><strong id="macro-fats">22g</strong></div>
-                    <div class="macro-progress-track"><div id="bar-fats" class="macro-progress-fill" style="width: 45%;"></div></div>
+                    <div class="macro-progress-track">
+                        <div id="bar-fats" class="macro-progress-fill" style="width: 45%;"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <section class="master-dock">
             <div class="dock-handle"></div>
-            
+
             <div class="dish-meta-row">
                 <div class="title-block">
                     <h2 id="current-dish-title">Classic Pepperoni Feast</h2>
-                    <p class="dish-description">Artisan sourdough crust, signature marinara, dynamic layers of smoked premium pepperoni.</p>
+                    <p class="dish-description">Artisan sourdough crust, signature marinara, dynamic layers of smoked
+                        premium pepperoni.</p>
                 </div>
                 <div class="price-block">
                     <span class="price-currency">$</span><span id="current-dish-price">16.49</span>
@@ -192,18 +558,27 @@
 
             <div class="segmented-control-container">
                 <div class="sliding-glider"></div>
-                <button id="tab-standard" class="control-tab active-tab" onclick="switchDietaryMode('standard')">Standard Option</button>
+                <button id="tab-standard" class="control-tab active-tab"
+                    onclick="switchDietaryMode('standard')">Standard Option</button>
                 <button id="tab-vegan" class="control-tab" onclick="switchDietaryMode('vegan')">Plant-Based 🌿</button>
             </div>
 
             <div class="action-footer-row">
                 <button class="secondary-action-btn" id="macro-toggle-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
                     <span>Macros</span>
                 </button>
                 <button class="primary-order-btn" id="confirm-selection-btn">
                     <span>Order with Waiter</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
                 </button>
             </div>
         </section>
@@ -213,7 +588,9 @@
     <div id="waiter-modal" class="modal-hidden">
         <div class="modal-card">
             <div class="success-ring">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
             <h3>Show This to Your Waiter</h3>
             <div class="summary-box">
@@ -225,13 +602,14 @@
         </div>
     </div>
 
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.mind; autoStart: true; uiLoading: no; uiError: no;" 
-             embedded vr-mode-ui="enabled: false" 
-             device-orientation-permission-ui="enabled: false">
-        
+    <a-scene mindar-image="imageTargetSrc: targets.mind; autoStart: true; uiLoading: no; uiError: no;" embedded
+        vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+        <!-- TARGET ENTITY 0 (Maps to your first compiled item: Pepperoni Pizza) -->
         <a-entity id="target-pepperoni" mindar-image-target="targetIndex: 0">
+            <!-- 2D High-Visibility Testing Plane Asset Node -->
             <a-plane color="#00e5ff" opacity="0.6" position="0 0 0" height="0.55" width="1" rotation="0 0 0"></a-plane>
         </a-entity>
 
@@ -309,7 +687,7 @@
             document.getElementById('current-dish-title').innerText = data.title;
             document.getElementById('current-dish-price').innerText = data.price;
             document.querySelector('.dish-description').innerText = data.description;
-            
+
             const indicator = document.querySelector('.diet-indicator');
             indicator.innerText = data.tag;
             indicator.className = "diet-indicator " + data.tagClass;
@@ -341,7 +719,7 @@
         }
 
         // Connects the Image Target Event Node to the UI Switch
-        window.triggerARItemScan = function(itemKey) {
+        window.triggerARItemScan = function (itemKey) {
             if (menuDatabase[itemKey]) {
                 currentActiveItem = itemKey;
                 updateUI();
@@ -361,7 +739,7 @@
                 const modalTag = document.getElementById('modal-dish-tag');
                 modalTag.innerText = currentIndicator.innerText;
                 modalTag.className = currentIndicator.className;
-                
+
                 document.getElementById('waiter-modal').classList.remove('modal-hidden');
                 document.getElementById('waiter-modal').classList.add('modal-visible');
             });
@@ -379,4 +757,5 @@
         });
     </script>
 </body>
+
 </html>
