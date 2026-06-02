@@ -606,15 +606,14 @@
         vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
         <a-assets>
-            <a-asset-item id="pizza-model"
-                src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/band-example/bear/scene.gltf"></a-asset-item>
+            <a-asset-item id="local-food-model" src="assets/food.glb"></a-asset-item>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity id="target-pepperoni" mindar-image-target="targetIndex: 0">
 
-            <a-gltf-model src="#pizza-model" position="0 0 0" scale="0.05 0.05 0.05" rotation="90 0 0">
+            <a-gltf-model src="#local-food-model" position="0 0 0.1" scale="1 1 1" rotation="90 0 0">
             </a-gltf-model>
 
         </a-entity>
