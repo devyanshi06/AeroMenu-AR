@@ -459,46 +459,6 @@
         .a-loader-title {
             display: none !important;
         }
-
-        @media screen and (max-width: 375px) {
-            .master-dock {
-                width: 95%;
-                padding: 16px;
-            }
-
-            .dish-description {
-                display: none;
-            }
-        }
-
-        @media screen and (min-width: 480px) {
-
-            .master-dock,
-            #macro-analytics-card {
-                width: 420px;
-                left: 50%;
-                position: absolute;
-                transform: translateX(-50%);
-            }
-
-            .master-dock {
-                bottom: 0;
-            }
-        }
-
-        @keyframes pulsingPulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.9;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
     </style>
 </head>
 
@@ -549,7 +509,6 @@
 
         <section class="master-dock">
             <div class="dock-handle"></div>
-
             <div class="dish-meta-row">
                 <div class="title-block">
                     <h2 id="current-dish-title">Classic Pepperoni Feast</h2>
@@ -587,7 +546,6 @@
                 </button>
             </div>
         </section>
-
     </div>
 
     <div id="waiter-modal" class="modal-hidden">
@@ -628,76 +586,61 @@
             <a-asset-item id="m-drnk-shk" src="assets/drnk_shk.glb"></a-asset-item>
         </a-assets>
 
-        <a-entity light="type: ambient; color: #ffffff; intensity: 1.8;"></a-entity>
-        <a-entity light="type: directional; color: #ffffff; intensity: 1.4;" position="2 4 3"></a-entity>
-        <a-entity light="type: directional; color: #ffffff; intensity: 0.6;" position="-2 2 -1"></a-entity>
+        <a-entity light="type: ambient; color: #ffffff; intensity: 2.0;"></a-entity>
+        <a-entity light="type: directional; color: #ffffff; intensity: 1.5;" position="1 4 2"></a-entity>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity class="ar-menu-target" data-itemkey="pizza_pepperoni" mindar-image-target="targetIndex: 0">
-            <a-gltf-model src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="pizza_veggie" mindar-image-target="targetIndex: 1">
-            <a-gltf-model src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="pizza_margherita" mindar-image-target="targetIndex: 2">
-            <a-gltf-model src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="burger_classic" mindar-image-target="targetIndex: 3">
-            <a-gltf-model src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="tacos_mexican" mindar-image-target="targetIndex: 4">
-            <a-gltf-model src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="pasta_alfredo" mindar-image-target="targetIndex: 5">
-            <a-gltf-model src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="bowl_salad" mindar-image-target="targetIndex: 6">
-            <a-gltf-model src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="bowl_ramen" mindar-image-target="targetIndex: 7">
-            <a-gltf-model src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="bowl_sushi" mindar-image-target="targetIndex: 8">
-            <a-gltf-model src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="app_nachos" mindar-image-target="targetIndex: 9">
-            <a-gltf-model src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="app_wings" mindar-image-target="targetIndex: 10">
-            <a-gltf-model src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="app_dumplings" mindar-image-target="targetIndex: 11">
-            <a-gltf-model src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="dessert_waffle" mindar-image-target="targetIndex: 12">
-            <a-gltf-model src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="dessert_cheesecake" mindar-image-target="targetIndex: 13">
-            <a-gltf-model src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
-
-        <a-entity class="ar-menu-target" data-itemkey="drink_shake" mindar-image-target="targetIndex: 14">
-            <a-gltf-model src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"></a-gltf-model>
-        </a-entity>
+        <a-entity id="target-0" data-key="pizza_pepperoni" mindar-image-target="targetIndex: 0"><a-gltf-model
+                src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-1" data-key="pizza_veggie" mindar-image-target="targetIndex: 1"><a-gltf-model
+                src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-2" data-key="pizza_margherita" mindar-image-target="targetIndex: 2"><a-gltf-model
+                src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-3" data-key="burger_classic" mindar-image-target="targetIndex: 3"><a-gltf-model
+                src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-4" data-key="tacos_mexican" mindar-image-target="targetIndex: 4"><a-gltf-model
+                src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-5" data-key="pasta_alfredo" mindar-image-target="targetIndex: 5"><a-gltf-model
+                src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-6" data-key="bowl_salad" mindar-image-target="targetIndex: 6"><a-gltf-model
+                src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-7" data-key="bowl_ramen" mindar-image-target="targetIndex: 7"><a-gltf-model
+                src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-8" data-key="bowl_sushi" mindar-image-target="targetIndex: 8"><a-gltf-model
+                src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-9" data-key="app_nachos" mindar-image-target="targetIndex: 9"><a-gltf-model
+                src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-10" data-key="app_wings" mindar-image-target="targetIndex: 10"><a-gltf-model
+                src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-11" data-key="app_dumplings" mindar-image-target="targetIndex: 11"><a-gltf-model
+                src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-12" data-key="dessert_waffle" mindar-image-target="targetIndex: 12"><a-gltf-model
+                src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-13" data-key="dessert_cheesecake" mindar-image-target="targetIndex: 13"><a-gltf-model
+                src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-14" data-key="drink_shake" mindar-image-target="targetIndex: 14"><a-gltf-model
+                src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
 
     </a-scene>
 
     <script>
-        // Full database schema containing values for all 15 targeted menu components
+        // FULL COMPREHENSIVE 15-ITEM SCHEMA (Fixes the blank text bug for other items)
         const menuDatabase = {
             "pizza_pepperoni": { standard: { title: "Classic Pepperoni Feast", price: "16.49", description: "Artisan sourdough crust, signature marinara, dynamic layers of smoked premium pepperoni.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "32g", pWidth: "75%", carbs: "68g", cWidth: "60%", fats: "22g", fWidth: "45%" }, vegan: { title: "Gourmet Plant-Vegan Pizza", price: "17.99", description: "Artisan sourdough crust, dairy-free mozzarella alternative, and jackfruit-based pepperoni.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "22g", pWidth: "55%", carbs: "74g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
             "pizza_veggie": { standard: { title: "Garden Fresh Supreme", price: "14.99", description: "Crisp bell peppers, red onions, mushrooms, juicy tomatoes, and fresh dairy mozzarella.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "62g", cWidth: "55%", fats: "16g", fWidth: "35%" }, vegan: { title: "Pure Plant Garden Delight", price: "15.99", description: "All organic garden veggies loaded over rich, melted plant-based cashew cheese.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "65g", cWidth: "58%", fats: "11g", fWidth: "22%" } },
@@ -718,6 +661,26 @@
 
         let currentActiveItem = "pizza_pepperoni";
         let currentActiveDiet = "standard";
+
+        // BOUNDING BOX BINDING FOR EXTRA MODEL SCALING RESILIENCE
+        AFRAME.registerComponent('auto-scale-normalize', {
+            init: function () {
+                this.el.addEventListener('model-loaded', () => {
+                    const mesh = this.el.getObject3D('mesh');
+                    if (!mesh) return;
+                    const box = new THREE.Box3().setFromObject(mesh);
+                    const size = new THREE.Vector3();
+                    box.getSize(size);
+                    const maxDim = Math.max(size.x, size.y, size.z);
+
+                    // Force normalize all shapes safely if they carry extreme structural exponents
+                    if (maxDim > 0) {
+                        const factor = 0.55 / maxDim;
+                        this.el.setAttribute('scale', { x: factor, y: factor, z: factor });
+                    }
+                });
+            }
+        });
 
         function updateUI() {
             const data = menuDatabase[currentActiveItem][currentActiveDiet];
@@ -755,9 +718,6 @@
             updateUI();
         }
 
-        // ==========================================================================
-        // 🔮 SELF-CORRECTING DATA ROUTING RUNTIME NODE
-        // ==========================================================================
         window.triggerARItemScan = function (itemKey) {
             if (menuDatabase[itemKey]) {
                 currentActiveItem = itemKey;
@@ -765,36 +725,8 @@
             }
         };
 
-        // Auto-bounding scale normalizer layer component register mapping logic
-        AFRAME.registerComponent('auto-scale-normalize', {
-            init: function () {
-                this.el.addEventListener('model-loaded', () => {
-                    const mesh = this.el.getObject3D('mesh');
-                    if (!mesh) return;
-
-                    // Calculate the real bounding dimensions of Person 2's asset
-                    const box = new THREE.Box3().setFromObject(mesh);
-                    const size = new THREE.Vector3();
-                    box.getSize(size);
-
-                    // Find the largest axis length to compute fractional scale offset adjustment
-                    const maxDim = Math.max(size.x, size.y, size.z);
-
-                    // If model is huge ( Blender scale exponent bug ) or microscopic, normalize it instantly to 0.4 units
-                    if (maxDim > 0) {
-                        const normalizationFactor = 0.4 / maxDim;
-                        this.el.setAttribute('scale', {
-                            x: normalizationFactor,
-                            y: normalizationFactor,
-                            z: normalizationFactor
-                        });
-                    }
-                });
-            }
-        });
-
         document.addEventListener("DOMContentLoaded", () => {
-            // Foreground Event Handlers
+            // UI Layer Event Configuration Handlers
             document.getElementById('macro-toggle-btn').addEventListener('click', () => {
                 document.getElementById('macro-analytics-card').classList.toggle('macro-card-visible');
             });
@@ -815,14 +747,16 @@
                 document.getElementById('waiter-modal').classList.add('modal-hidden');
             });
 
-            // Dynamic tracking target registration loops traversing DOM architecture attributes
-            document.querySelectorAll('.ar-menu-target').forEach(targetEntity => {
-                const itemKey = targetEntity.getAttribute('data-itemkey');
-
-                targetEntity.addEventListener("targetFound", () => {
-                    window.triggerARItemScan(itemKey);
-                });
-            });
+            // Standardize item matching arrays across the active element anchors
+            for (let i = 0; i <= 14; i++) {
+                const entity = document.querySelector(`#target-${i}`);
+                if (entity) {
+                    const key = entity.getAttribute('data-key');
+                    entity.addEventListener("targetFound", () => {
+                        window.triggerARItemScan(key);
+                    });
+                }
+            }
         });
     </script>
 </body>
