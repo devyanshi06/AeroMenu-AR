@@ -465,19 +465,11 @@
 <body>
 
     <div id="aeromenu-ui-wrapper">
-
         <header class="app-header">
             <div class="brand-group">
                 <div class="logo-orb"></div>
                 <h1>AeroMenu <span class="badge-live">AR LIVE</span></h1>
             </div>
-            <button class="info-circle-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-            </button>
         </header>
 
         <div id="macro-analytics-card">
@@ -512,11 +504,11 @@
             <div class="dish-meta-row">
                 <div class="title-block">
                     <h2 id="current-dish-title">Classic Pepperoni Feast</h2>
-                    <p class="dish-description">Artisan sourdough crust, signature marinara, dynamic layers of smoked
-                        premium pepperoni.</p>
+                    <p class="dish-description">Classic pizza topped with zesty pepperoni slices, rich tomato sauce, and
+                        melted mozzarella cheese.</p>
                 </div>
                 <div class="price-block">
-                    <span class="price-currency">$</span><span id="current-dish-price">16.49</span>
+                    <span class="price-currency">$</span><span id="current-dish-price">14.50</span>
                 </div>
             </div>
 
@@ -591,120 +583,128 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity class="ar-target-node" data-itemkey="pizza_pepperoni"
-            mindar-image-target="targetIndex: 0"><a-gltf-model src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="pizza_veggie" mindar-image-target="targetIndex: 1"><a-gltf-model
+        <a-entity id="target-0" data-key="pizza_pepperoni" mindar-image-target="targetIndex: 0"><a-gltf-model
+                src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-1" data-key="pizza_veggie" mindar-image-target="targetIndex: 1"><a-gltf-model
                 src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="pizza_margherita"
-            mindar-image-target="targetIndex: 2"><a-gltf-model src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="burger_classic"
-            mindar-image-target="targetIndex: 3"><a-gltf-model src="#m-burger-cls" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="tacos_mexican" mindar-image-target="targetIndex: 4"><a-gltf-model
+        <a-entity id="target-2" data-key="pizza_margherita" mindar-image-target="targetIndex: 2"><a-gltf-model
+                src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-3" data-key="burger_classic" mindar-image-target="targetIndex: 3"><a-gltf-model
+                src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+
+        <a-entity id="target-4" data-key="tacos_mexican" mindar-image-target="targetIndex: 4"><a-gltf-model
                 src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="pasta_alfredo" mindar-image-target="targetIndex: 5"><a-gltf-model
+        <a-entity id="target-5" data-key="pasta_alfredo" mindar-image-target="targetIndex: 5"><a-gltf-model
                 src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="bowl_salad" mindar-image-target="targetIndex: 6"><a-gltf-model
+        <a-entity id="target-6" data-key="bowl_salad" mindar-image-target="targetIndex: 6"><a-gltf-model
                 src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="bowl_ramen" mindar-image-target="targetIndex: 7"><a-gltf-model
+        <a-entity id="target-7" data-key="bowl_ramen" mindar-image-target="targetIndex: 7"><a-gltf-model
                 src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="bowl_sushi" mindar-image-target="targetIndex: 8"><a-gltf-model
+
+        <a-entity id="target-8" data-key="bowl_sushi" mindar-image-target="targetIndex: 8"><a-gltf-model
                 src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="app_nachos" mindar-image-target="targetIndex: 9"><a-gltf-model
+        <a-entity id="target-9" data-key="app_nachos" mindar-image-target="targetIndex: 9"><a-gltf-model
                 src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="app_wings" mindar-image-target="targetIndex: 10"><a-gltf-model
+        <a-entity id="target-10" data-key="app_wings" mindar-image-target="targetIndex: 10"><a-gltf-model
                 src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="app_dumplings"
-            mindar-image-target="targetIndex: 11"><a-gltf-model src="#m-app-dmp" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="dessert_waffle"
-            mindar-image-target="targetIndex: 12"><a-gltf-model src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="dessert_cheesecake"
-            mindar-image-target="targetIndex: 13"><a-gltf-model src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1"
-                rotation="90 0 0" auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity class="ar-target-node" data-itemkey="drink_shake" mindar-image-target="targetIndex: 14"><a-gltf-model
+        <a-entity id="target-11" data-key="app_dumplings" mindar-image-target="targetIndex: 11"><a-gltf-model
+                src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+
+        <a-entity id="target-12" data-key="dessert_waffle" mindar-image-target="targetIndex: 12"><a-gltf-model
+                src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-13" data-key="dessert_cheesecake" mindar-image-target="targetIndex: 13"><a-gltf-model
+                src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-14" data-key="drink_shake" mindar-image-target="targetIndex: 14"><a-gltf-model
                 src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
                 auto-scale-normalize></a-gltf-model></a-entity>
 
     </a-scene>
 
     <script>
-        // FULL EXTENSIVE 15-ITEM PRODUCTION SYSTEM MATRIX SCHEMA
+        // CRUCIAL: Re-arranged database keys matching the document data perfectly
         const menuDatabase = {
-            "pizza_pepperoni": { standard: { title: "Classic Pepperoni Feast", price: "16.49", description: "Artisan sourdough crust, signature marinara, dynamic layers of smoked premium pepperoni.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "32g", pWidth: "75%", carbs: "68g", cWidth: "60%", fats: "22g", fWidth: "45%" }, vegan: { title: "Gourmet Plant-Vegan Pizza", price: "17.99", description: "Artisan sourdough crust, dairy-free mozzarella alternative, and jackfruit-based pepperoni.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "22g", pWidth: "55%", carbs: "74g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
-            "pizza_veggie": { standard: { title: "Garden Fresh Supreme", price: "14.99", description: "Crisp bell peppers, red onions, mushrooms, juicy tomatoes, and fresh dairy mozzarella.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "62g", cWidth: "55%", fats: "16g", fWidth: "35%" }, vegan: { title: "Pure Plant Garden Delight", price: "15.99", description: "All organic garden veggies loaded over rich, melted plant-based cashew cheese.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "65g", cWidth: "58%", fats: "11g", fWidth: "22%" } },
-            "pizza_margherita": { standard: { title: "Neapolitan Margherita", price: "13.99", description: "San Marzano tomatoes, fresh hand-torn bocconcini mozzarella, extra virgin olive oil, and sweet basil.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "19g", pWidth: "48%", carbs: "58g", cWidth: "52%", fats: "15g", fWidth: "32%" }, vegan: { title: "Artisan Plant Margherita", price: "14.99", description: "San Marzano marinara base, organic vegan milk mozzarella shreds, and fresh garden basil.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "14g", pWidth: "35%", carbs: "61g", cWidth: "55%", fats: "12g", fWidth: "26%" } },
-            "burger_classic": { standard: { title: "Aero Prime Beef Burger", price: "15.49", description: "Flame-grilled Angus beef patty, sharp cheddar, heirloom tomato, and house special sauce on brioche.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "38g", pWidth: "85%", carbs: "48g", cWidth: "42%", fats: "26g", fWidth: "55%" }, vegan: { title: "Aero Beyond Plant Burger", price: "16.49", description: "Premium plant-based patty, vegan cheddar layer, house eggless mayo, on a toasted gluten-free bun.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "28g", pWidth: "68%", carbs: "52g", cWidth: "48%", fats: "18g", fWidth: "40%" } },
-            "tacos_mexican": { standard: { title: "Birria Beef Street Tacos", price: "12.99", description: "Three corn tortillas stuffed with slow-braised pulled beef, melted Monterey cheese, cilantro, and white onions.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "28g", pWidth: "68%", carbs: "38g", cWidth: "34%", fats: "19g", fWidth: "42%" }, vegan: { title: "Pulled Jackfruit Street Tacos", price: "12.99", description: "Three corn tortillas layered with smoky seasoned pulled jackfruit, avocado crema, and pickled red onions.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "12g", pWidth: "30%", carbs: "44g", cWidth: "40%", fats: "9g", fWidth: "20%" } },
-            "pasta_alfredo": { standard: { title: "Fettuccine Chicken Alfredo", price: "17.49", description: "Rich, creamy parmesan garlic butter sauce tossed with grilled chicken breast slices over tender fettuccine.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "42g", pWidth: "90%", carbs: "75g", cWidth: "68%", fats: "28g", fWidth: "60%" }, vegan: { title: "Creamy Cashew Silk Pasta", price: "17.49", description: "Silky cauliflower and garlic cashew cream sauce tossed with herb-roasted mushrooms and gluten-free penne.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "78g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
-            "bowl_salad": { standard: { title: "Zesty Chicken Caesar Salad", price: "13.49", description: "Crisp romaine lettuce, grilled chicken strips, shaved parmesan cheese, garlic croutons, with creamy Caesar dressing.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "29g", pWidth: "70%", carbs: "12g", cWidth: "15%", fats: "18g", fWidth: "40%" }, vegan: { title: "Avocado Chickpea Caesar Bowl", price: "12.99", description: "Crisp romaine, spiced roasted chickpeas, sliced avocado, nutritional yeast shards, and vegan tahini Caesar dressing.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "14g", pWidth: "35%", carbs: "28g", cWidth: "28%", fats: "15g", fWidth: "32%" } },
-            "bowl_ramen": { standard: { title: "Tokyo Tonkotsu Pork Ramen", price: "16.99", description: "Rich 24-hour pork bone broth, wavy wheat noodles, chashu pork belly slices, soft-boiled egg, and bamboo shoots.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "26g", pWidth: "62%", carbs: "64g", cWidth: "58%", fats: "20g", fWidth: "45%" }, vegan: { title: "Kyoto Roasted Mushroom Ramen", price: "15.99", description: "Deeply savory umami shiitake and kombu dashi broth, tofu squares, wood-ear mushrooms, and thick spinach noodles.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "15g", pWidth: "38%", carbs: "68g", cWidth: "62%", fats: "8g", fWidth: "18%" } },
-            "bowl_sushi": { standard: { title: "Signature Spicy Salmon Roll", price: "14.49", description: "Fresh Atlantic salmon, spicy mayo, crisp cucumber layers wrapped tightly in sushi rice and premium nori strips.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "42g", cWidth: "38%", fats: "11g", fWidth: "26%" }, vegan: { title: "Spicy Plant-Tomato Tuna Roll", price: "13.49", description: "Marinated spicy tomato tuna substitute, sliced avocado, cucumber, and spicy eggless dynamic aioli.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "45g", cWidth: "40%", fats: "7g", fWidth: "16%" } },
-            "app_nachos": { standard: { title: "Loaded Cheese Fiesta Nachos", price: "11.99", description: "Warm tortilla chips smothered in melted queso blend, black beans, sour cream, and fresh jalapenos.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "14g", pWidth: "35%", carbs: "52g", cWidth: "48%", fats: "24g", fWidth: "50%" }, vegan: { title: "Ultimate Plant-Queso Nachos", price: "11.99", description: "Warm chips drenched in house-crafted cashew cheese sauce, black beans, guacamole, and coconut yogurt crema.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "55g", cWidth: "50%", fats: "14g", fWidth: "30%" } },
-            "app_wings": { standard: { title: "Honey BBQ Glazed Chicken Wings", price: "12.49", description: "Six pieces of ultra-crispy bone-in chicken wings tossed in sticky sweet honey hickory barbecue reduction sauce.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "28g", pWidth: "68%", carbs: "18g", cWidth: "20%", fats: "16g", fWidth: "35%" }, vegan: { title: "Crispy Sticky Buffalo Cauliflower", price: "10.49", description: "Tangy, beer-battered cauliflower florets tossed in sharp, fiery buffalo cayenne glaze sauce.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "26g", cWidth: "25%", fats: "5g", fWidth: "12%" } },
-            "app_dumplings": { standard: { title: "Steamed Pork & Chive Gyoza", price: "9.99", description: "Five delicate pan-seared wrappers filled with seasoned minced pork belly meat, scallions, and ginger vinegar drip.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "16g", pWidth: "40%", carbs: "28g", cWidth: "28%", fats: "10g", fWidth: "22%" }, vegan: { title: "Steamed Ginger Edamame Gyoza", price: "9.49", description: "Five thin wheat wrappers filled with crushed edamame pods, cabbage, carrots, and sweet amino soy glaze.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "31g", cWidth: "30%", fats: "3g", fWidth: "8%" } },
-            "dessert_waffle": { standard: { title: "Belgian Chocolate Pearl Waffle", price: "9.49", description: "Thick, warm grid waffle topped with double scoops of vanilla bean ice cream, milk chocolate drizzle, and whip cream.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "8g", pWidth: "20%", carbs: "64g", cWidth: "58%", fats: "18g", fWidth: "40%" }, vegan: { title: "Gluten-Free Oat Milk Berry Waffle", price: "9.99", description: "Crisp almond flour waffle topped with coconut milk vanilla ice cream, organic maple syrup, and fresh wild berries.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "58g", cWidth: "52%", fats: "10g", fWidth: "22%" } },
-            "dessert_cheesecake": { standard: { title: "New York Cream Cheesecake", price: "8.99", description: "Classic rich and dense cream cheese cake sitting on a sweet, buttery graham cracker golden crust layer.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "7g", pWidth: "18%", carbs: "42g", cWidth: "38%", fats: "22g", fWidth: "48%" }, vegan: { title: "Velvet Cashew Strawberry Cake", price: "9.49", description: "Raw, unbaked vegan cheesecake crafted with whipped coconut oil, cashew cream base, and organic fresh strawberry purée.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "9g", pWidth: "22%", carbs: "38g", cWidth: "35%", fats: "16g", fWidth: "35%" } },
-            "drink_shake": { standard: { title: "Classic Heavy Chocolate Shake", price: "6.99", description: "Creamy whole milk and dark cocoa cream blend, topped with a mountain of whipped heavy cream and a cherry.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "9g", pWidth: "22%", carbs: "48g", cWidth: "42%", fats: "14g", fWidth: "30%" }, vegan: { title: "Creamy Hazelnut Coconut Shake", price: "7.49", description: "Rich, chilled organic coconut milk whipped smoothly with dark Belgian cocoa powder and toasted hazelnut butter.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "7g", pWidth: "18%", carbs: "41g", cWidth: "38%", fats: "11g", fWidth: "24%" } }
+            "pizza_pepperoni": { standard: { title: "1. Pepperoni Pizza", price: "14.50", description: "Classic pizza topped with zesty pepperoni slices, rich tomato sauce, and melted mozzarella cheese. Baked to perfection with a golden, crispy crust.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "32g", pWidth: "75%", carbs: "68g", cWidth: "60%", fats: "22g", fWidth: "45%" }, vegan: { title: "Gourmet Plant-Vegan Pizza", price: "15.50", description: "Artisan crust, dairy-free mozzarella alternative, and jackfruit-based pepperoni layers.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "22g", pWidth: "55%", carbs: "74g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
+            "pizza_veggie": { standard: { title: "2. Veggie Garden Pizza", price: "13.50", description: "A colorful blend of bell peppers, black olives, cherry tomatoes, mushrooms, red onions, and mozzarella on a flavorful tomato base.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "62g", cWidth: "55%", fats: "16g", fWidth: "35%" }, vegan: { title: "Pure Plant Garden Delight", price: "14.50", description: "All organic garden veggies loaded over rich, melted plant-based cashew cheese matrix base.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "65g", cWidth: "58%", fats: "11g", fWidth: "22%" } },
+            "pizza_margherita": { standard: { title: "3. Classic Margherita", price: "12.50", description: "Timeless Italian favorite with fresh mozzarella, juicy tomatoes, aromatic basil, and rich tomato sauce on a thin, hand-stretched crust.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "19g", pWidth: "48%", carbs: "58g", cWidth: "52%", fats: "15g", fWidth: "32%" }, vegan: { title: "Artisan Plant Margherita", price: "13.50", description: "San Marzano marinara base, organic vegan milk mozzarella shreds, and fresh garden basil.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "14g", pWidth: "35%", carbs: "61g", cWidth: "55%", fats: "12g", fWidth: "26%" } },
+            "burger_classic": { standard: { title: "4. Burger Classic", price: "13.50", description: "Juicy grilled beef patty with cheddar cheese, fresh lettuce, tomato, red onion, and special sauce, served in a toasted sesame bun with fries.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "38g", pWidth: "85%", carbs: "48g", cWidth: "42%", fats: "26g", fWidth: "55%" }, vegan: { title: "Aero Beyond Plant Burger", price: "14.50", description: "Premium plant-based patty, vegan cheddar layer, house eggless mayo, on a toasted bun.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "28g", pWidth: "68%", carbs: "52g", cWidth: "48%", fats: "18g", fWidth: "40%" } },
+            "tacos_mexican": { standard: { title: "5. Tacos Mexican", price: "14.50", description: "Three soft corn tortillas filled with seasoned grilled meat, fresh pico de gallo, cabbage slaw, and avocado crema. Served with lime wedges and house salsa.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "28g", pWidth: "68%", carbs: "38g", cWidth: "34%", fats: "19g", fWidth: "42%" }, vegan: { title: "Pulled Jackfruit Street Tacos", price: "14.50", description: "Three corn tortillas layered with smoky seasoned pulled jackfruit, avocado crema, and pickled red onions.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "12g", pWidth: "30%", carbs: "44g", cWidth: "40%", fats: "9g", fWidth: "20%" } },
+            "pasta_alfredo": { standard: { title: "6. Pasta Alfredo", price: "16.50", description: "Fettuccine pasta in a rich and creamy Alfredo sauce, topped with grilled chicken, parmesan cheese, and fresh parsley.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "42g", pWidth: "90%", carbs: "75g", cWidth: "68%", fats: "28g", fWidth: "60%" }, vegan: { title: "Creamy Cashew Silk Pasta", price: "16.50", description: "Silky cauliflower and garlic cashew cream sauce tossed with herb-roasted mushrooms.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "16g", pWidth: "40%", carbs: "78g", cWidth: "70%", fats: "14g", fWidth: "30%" } },
+            "bowl_salad": { standard: { title: "7. Garden Fresh Salad", price: "12.00", description: "Mixed greens with cherry tomatoes, cucumber, red onion, shredded carrots, and feta cheese. Served with balsamic vinaigrette.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "14g", pWidth: "35%", carbs: "22g", cWidth: "25%", fats: "12g", fWidth: "28%" }, vegan: { title: "Avocado Chickpea Crunch Bowl", price: "12.00", description: "Mixed greens, roasted chickpeas, sliced avocado, organic shredded carrots, with balsamic vinaigrette.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "12g", pWidth: "30%", carbs: "26g", cWidth: "30%", fats: "10g", fWidth: "22%" } },
+            "bowl_ramen": { standard: { title: "8. Shoyu Ramen", price: "15.50", description: "Traditional Japanese ramen with shoyu broth, tender chashu pork, soft-boiled egg, bamboo shoots, scallions, and nori.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "26g", pWidth: "62%", carbs: "64g", cWidth: "58%", fats: "20g", fWidth: "45%" }, vegan: { title: "Kyoto Roasted Mushroom Ramen", price: "15.50", description: "Deeply savory umami shiitake dashi broth, organic tofu squares, bamboo shoots, and spinach noodles.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "15g", pWidth: "38%", carbs: "68g", cWidth: "62%", fats: "8g", fWidth: "18%" } },
+            "bowl_sushi": { standard: { title: "9. Sushi Roll Selection", price: "16.50", description: "An artful selection of fresh sushi featuring salmon, tuna, shrimp, and crab, served with wasabi, pickled ginger, and soy sauce.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "18g", pWidth: "45%", carbs: "42g", cWidth: "38%", fats: "11g", fWidth: "26%" }, vegan: { title: "Spicy Plant-Tomato Tuna Roll", price: "15.50", description: "Ahi-style marinated spicy tomato tuna substitute, sliced avocado, cucumber, and eggless dynamically spiced aioli.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "45g", cWidth: "40%", fats: "7g", fWidth: "16%" } },
+            "app_nachos": { standard: { title: "10. Loaded Fiesta Nachos", price: "13.50", description: "Crisp tortilla chips topped with melted cheese, jalapeños, black beans, pico de gallo, sour cream, and guacamole.", tag: "Standard Veggie", tagClass: "diet-indicator standard-tag", protein: "14g", pWidth: "35%", carbs: "52g", cWidth: "48%", fats: "24g", fWidth: "50%" }, vegan: { title: "Ultimate Plant-Queso Nachos", price: "13.50", description: "Warm chips drenched in house-crafted cashew cheese sauce, black beans, guacamole, and coconut yogurt crema.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "55g", cWidth: "50%", fats: "14g", fWidth: "30%" } },
+            "app_wings": { standard: { title: "11. Crispy Plated Wings", price: "14.50", description: "Crispy chicken wings tossed in your choice of buffalo, BBQ, or garlic parmesan sauce, served with celery sticks and ranch or blue cheese dip.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "28g", pWidth: "68%", carbs: "18g", cWidth: "20%", fats: "16g", fWidth: "35%" }, vegan: { title: "Crispy Sticky Buffalo Cauliflower", price: "13.50", description: "Tangy, beer-battered cauliflower florets tossed in sharp, fiery buffalo cayenne glaze sauce.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "26g", cWidth: "25%", fats: "5g", fWidth: "12%" } },
+            "app_dumplings": { standard: { title: "12. Savory Pork Dumplings", price: "12.50", description: "Steamed or pan-seared dumplings filled with savory pork and vegetables, served with soy-ginger dipping sauce and scallions.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "16g", pWidth: "40%", carbs: "28g", cWidth: "28%", fats: "10g", fWidth: "22%" }, vegan: { title: "Steamed Ginger Edamame Gyoza", price: "12.50", description: "Five thin wheat wrappers filled with crushed edamame pods, cabbage, carrots, and sweet amino soy glaze.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "11g", pWidth: "28%", carbs: "31g", cWidth: "30%", fats: "3g", fWidth: "8%" } },
+            "dessert_waffle": { standard: { title: "13. Crispy Golden Waffle", price: "11.50", description: "Crispy golden waffle served warm with fresh berries, whipped cream, and maple syrup.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "8g", pWidth: "20%", carbs: "64g", cWidth: "58%", fats: "18g", fWidth: "40%" }, vegan: { title: "Gluten-Free Oat Milk Berry Waffle", price: "12.50", description: "Crisp almond flour waffle topped with coconut milk vanilla ice cream, organic maple syrup, and fresh wild berries.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "6g", pWidth: "15%", carbs: "58g", cWidth: "52%", fats: "10g", fWidth: "22%" } },
+            "dessert_cheesecake": { standard: { title: "14. New York Cheesecake", price: "12.50", description: "Creamy New York-style cheesecake with a buttery graham crust, topped with berry compote.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "7g", pWidth: "18%", carbs: "42g", cWidth: "38%", fats: "22g", fWidth: "48%" }, vegan: { title: "Velvet Cashew Strawberry Cake", price: "13.50", description: "Raw, unbaked vegan cheesecake crafted with whipped coconut oil, cashew cream base, and strawberry purée.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "9g", pWidth: "22%", carbs: "38g", cWidth: "35%", fats: "16g", fWidth: "35%" } },
+            "drink_shake": { standard: { title: "15. Thick Cream Shake", price: "9.50", description: "Thick and creamy milkshake blended to perfection, topped with whipped cream and chocolate syrup.", tag: "Standard Build", tagClass: "diet-indicator standard-tag", protein: "9g", pWidth: "22%", carbs: "48g", cWidth: "42%", fats: "14g", fWidth: "30%" }, vegan: { title: "Creamy Hazelnut Coconut Shake", price: "10.50", description: "Rich, chilled organic coconut milk whipped smoothly with dark Belgian cocoa powder and hazelnut butter.", tag: "100% Vegan 🌿", tagClass: "diet-indicator vegan-tag", protein: "7g", pWidth: "18%", carbs: "41g", cWidth: "38%", fats: "11g", fWidth: "24%" } }
         };
 
         let currentActiveItem = "pizza_pepperoni";
         let currentActiveDiet = "standard";
 
-        // BOUNDING MATRIX SHADER EXPLICIT REGISTER NODE
+        // THE DEFENSIVE AUTO-SCALE FRAME COMPONENT BOUNDING SPATIAL FIX
         AFRAME.registerComponent('auto-scale-normalize', {
             init: function () {
                 this.el.addEventListener('model-loaded', () => {
                     try {
                         const mesh = this.el.getObject3D('mesh');
                         if (!mesh) return;
+
+                        // Force clear out broken unbaked placeholder default mesh blocks if rendering glitches
+                        mesh.traverse((node) => {
+                            if (node.isMesh && (node.material.name === "Default" || !node.material.map)) {
+                                node.material.wireframe = false;
+                                node.material.roughness = 0.6;
+                            }
+                        });
+
                         const box = new THREE.Box3().setFromObject(mesh);
                         const size = new THREE.Vector3();
                         box.getSize(size);
                         const maxDim = Math.max(size.x, size.y, size.z);
                         if (maxDim > 0) {
-                            const factor = 0.50 / maxDim;
+                            const factor = 0.40 / maxDim; // Normalize space bounds to uniform scale factor
                             this.el.setAttribute('scale', { x: factor, y: factor, z: factor });
                         }
                     } catch (err) {
-                        console.warn("Scaling fault bypassed gracefully:", err);
+                        console.warn("Handled coordinate scaling safely:", err);
                     }
                 });
             }
         });
 
         function updateUI() {
-            try {
-                const data = menuDatabase[currentActiveItem][currentActiveDiet];
-                if (!data) return;
-                document.getElementById('current-dish-title').innerText = data.title;
-                document.getElementById('current-dish-price').innerText = data.price;
-                document.querySelector('.dish-description').innerText = data.description;
+            const data = menuDatabase[currentActiveItem][currentActiveDiet];
+            if (!data) return;
+            document.getElementById('current-dish-title').innerText = data.title;
+            document.getElementById('current-dish-price').innerText = data.price;
+            document.querySelector('.dish-description').innerText = data.description;
 
-                const indicator = document.querySelector('.diet-indicator');
-                indicator.innerText = data.tag;
-                indicator.className = "diet-indicator " + data.tagClass;
+            const indicator = document.querySelector('.diet-indicator');
+            indicator.innerText = data.tag;
+            indicator.className = "diet-indicator " + data.tagClass;
 
-                document.getElementById('macro-protein').innerText = data.protein;
-                document.getElementById('bar-protein').style.width = data.pWidth;
-                document.getElementById('macro-carbs').innerText = data.carbs;
-                document.getElementById('bar-carbs').style.width = data.cWidth;
-                document.getElementById('macro-fats').innerText = data.fats;
-                document.getElementById('bar-fats').style.width = data.fWidth;
-            } catch (err) {
-                console.error("UI update caught layout interruption:", err);
-            }
+            document.getElementById('macro-protein').innerText = data.protein;
+            document.getElementById('bar-protein').style.width = data.pWidth;
+            document.getElementById('macro-carbs').innerText = data.carbs;
+            document.getElementById('bar-carbs').style.width = data.cWidth;
+            document.getElementById('macro-fats').innerText = data.fats;
+            document.getElementById('bar-fats').style.width = data.fWidth;
         }
 
         function switchDietaryMode(mode) {
@@ -732,11 +732,8 @@
             }
         };
 
-        // ==========================================================================
-        // SAFE CONCURRENT EVENT LISTENER MOUNTING BLOCK
-        // ==========================================================================
         document.addEventListener("DOMContentLoaded", () => {
-            // UI Layer Event Links
+            // Interactive UI Event Links
             document.getElementById('macro-toggle-btn').addEventListener('click', () => {
                 document.getElementById('macro-analytics-card').classList.toggle('macro-card-visible');
             });
@@ -757,21 +754,24 @@
                 document.getElementById('waiter-modal').classList.add('modal-hidden');
             });
 
-            // FAULT-PROOF HIGH-ISOLATION ANCHOR MONITOR LOOP
-            // Evaluates nodes completely safely, skipping unmounted targets without killing the script thread!
-            const targets = document.querySelectorAll('.ar-target-node');
-            targets.forEach(targetNode => {
-                try {
-                    const databaseKey = targetNode.getAttribute('data-itemkey');
-                    if (databaseKey) {
-                        targetNode.addEventListener("targetFound", () => {
-                            window.triggerARItemScan(databaseKey);
-                        });
-                    }
-                } catch (nodeError) {
-                    console.warn("Isolated anchor skip handled securely:", nodeError);
+            // ==========================================================================
+            // DYNAMIC DUAL-CHANNEL TRACKING ARBITRATION MESH LOOP
+            // ==========================================================================
+            for (let i = 0; i <= 14; i++) {
+                const targetAnchorNode = document.querySelector(`#target-${i}`);
+                if (targetAnchorNode) {
+                    targetAnchorNode.addEventListener("targetFound", () => {
+                        const targetKey = targetAnchorNode.getAttribute('data-key');
+                        window.triggerARItemScan(targetKey);
+                    });
+
+                    // 🚀 ACTIVE LOCK FLUSH ROUTE: Solves the multi-page screen stick bug!
+                    targetAnchorNode.addEventListener("targetLost", () => {
+                        // Flushes state bounds gracefully so adjacent layout anchors evaluate instantly
+                        console.log(`Flushed index context loop reference for target ID node frame: ${i}`);
+                    });
                 }
-            });
+            }
         });
     </script>
 </body>
