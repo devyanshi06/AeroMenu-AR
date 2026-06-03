@@ -583,54 +583,110 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity id="target-0" data-key="pizza_pepperoni" mindar-image-target="targetIndex: 0"><a-gltf-model
-                src="#m-pizza-pep" position="0 0 0" scale="3 3 3" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-1" data-key="pizza_veggie" mindar-image-target="targetIndex: 1"><a-gltf-model
-                src="#m-pizza-veg" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-2" data-key="pizza_margherita" mindar-image-target="targetIndex: 2"><a-gltf-model
-                src="#m-pizza-mar" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-3" data-key="burger_classic" mindar-image-target="targetIndex: 3"><a-gltf-model
-                src="#m-burger-cls" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-0" data-key="pizza_pepperoni" mindar-image-target="targetIndex: 0">
+            <a-gltf-model src="#m-pizza-pep" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ff5e62" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
 
-        <a-entity id="target-4" data-key="tacos_mexican" mindar-image-target="targetIndex: 4"><a-gltf-model
-                src="#m-tacos-mex" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-5" data-key="pasta_alfredo" mindar-image-target="targetIndex: 5"><a-gltf-model
-                src="#m-pasta-alf" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-6" data-key="bowl_salad" mindar-image-target="targetIndex: 6"><a-gltf-model
-                src="#m-bowl-sld" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-7" data-key="bowl_ramen" mindar-image-target="targetIndex: 7"><a-gltf-model
-                src="#m-bowl-ram" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-1" data-key="pizza_veggie" mindar-image-target="targetIndex: 1">
+            <a-gltf-model src="#m-pizza-veg" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#4ade80" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
 
-        <a-entity id="target-8" data-key="bowl_sushi" mindar-image-target="targetIndex: 8"><a-gltf-model
-                src="#m-bowl-ssh" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-9" data-key="app_nachos" mindar-image-target="targetIndex: 9"><a-gltf-model
-                src="#m-app-nch" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-10" data-key="app_wings" mindar-image-target="targetIndex: 10"><a-gltf-model
-                src="#m-app-wng" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-11" data-key="app_dumplings" mindar-image-target="targetIndex: 11"><a-gltf-model
-                src="#m-app-dmp" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-2" data-key="pizza_margherita" mindar-image-target="targetIndex: 2">
+            <a-gltf-model src="#m-pizza-mar" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ffa726" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
 
-        <a-entity id="target-12" data-key="dessert_waffle" mindar-image-target="targetIndex: 12"><a-gltf-model
-                src="#m-dsrt-wfl" position="0 0 0" scale="0.5 0.5 0.5" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-13" data-key="dessert_cheesecake" mindar-image-target="targetIndex: 13"><a-gltf-model
-                src="#m-dsrt-chk" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
-        <a-entity id="target-14" data-key="drink_shake" mindar-image-target="targetIndex: 14"><a-gltf-model
-                src="#m-drnk-shk" position="0 0 0" scale="1 1 1" rotation="90 0 0"
-                auto-scale-normalize></a-gltf-model></a-entity>
+        <a-entity id="target-3" data-key="burger_classic" mindar-image-target="targetIndex: 3">
+            <a-gltf-model src="#m-burger-cls" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ff5e62" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-4" data-key="tacos_mexican" mindar-image-target="targetIndex: 4">
+            <a-gltf-model src="#m-tacos-mex" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#4ade80" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-5" data-key="pasta_alfredo" mindar-image-target="targetIndex: 5">
+            <a-gltf-model src="#m-pasta-alf" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ffa726" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-6" data-key="bowl_salad" mindar-image-target="targetIndex: 6">
+            <a-gltf-model src="#m-bowl-sld" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#4ade80" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-7" data-key="bowl_ramen" mindar-image-target="targetIndex: 7">
+            <a-gltf-model src="#m-bowl-ram" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ff5e62" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-8" data-key="bowl_sushi" mindar-image-target="targetIndex: 8">
+            <a-gltf-model src="#m-bowl-ssh" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ffa726" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-9" data-key="app_nachos" mindar-image-target="targetIndex: 9">
+            <a-gltf-model src="#m-app-nch" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ff5e62" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-10" data-key="app_wings" mindar-image-target="targetIndex: 10">
+            <a-gltf-model src="#m-app-wng" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ffa726" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-11" data-key="app_dumplings" mindar-image-target="targetIndex: 11">
+            <a-gltf-model src="#m-app-dmp" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#4ade80" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-12" data-key="dessert_waffle" mindar-image-target="targetIndex: 12">
+            <a-gltf-model src="#m-dsrt-wfl" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ffa726" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-13" data-key="dessert_cheesecake" mindar-image-target="targetIndex: 13">
+            <a-gltf-model src="#m-dsrt-chk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#ff5e62" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
+
+        <a-entity id="target-14" data-key="drink_shake" mindar-image-target="targetIndex: 14">
+            <a-gltf-model src="#m-drnk-shk" position="0 0 0.15" scale="1 1 1" rotation="90 0 0"
+                auto-scale-normalize></a-gltf-model>
+            <a-cylinder radius="0.3" height="0.02" color="#4ade80" opacity="0.7" rotation="90 0 0" position="0 0 0"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 6000"></a-cylinder>
+        </a-entity>
 
     </a-scene>
 
